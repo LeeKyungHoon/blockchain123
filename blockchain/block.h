@@ -1,5 +1,4 @@
 
-#include<time.h>
 #include"Blockheader.h"
 #include"Transaction.h"
 
@@ -8,20 +7,29 @@ private:
 	Blockheader header;
 	Transaction blockTx;
 public:
-	Block(Blockheader header, Transaction Tx);
+	Block();
 	void setNull();
 	Blockheader getHeader();
 	Transaction getTransaction();
 };
 
-inline Block::Block(Blockheader header, Transaction Tx) {
+inline Block::Block() {
 	setNull();
 }
 
 inline void Block::setNull()
 {
-	Block::header = Blockheader::setNull();
-	Block::blockTx = Transaction::setNull();
+	Block::header.setNull();
+	Block::blockTx.setNull();
+}
+
+Blockheader Block::getHeader() {
+	Blockheader block;
+	block.hashPrevBlock = hashPrevBlock;
+	block.hashMerkleTree = hashMerkleTree;
+	block.Time = Time;
+	block.Difficulty = Difficulty;
+	block.Nonce = Nonce;
 }
 
 
