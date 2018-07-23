@@ -12,7 +12,7 @@ void Transaction::getHash(const Transaction &Tx ) {
 	txString.append(std::to_string(Tx.state_sign));
 	
 
-	this->hash = SHA256::InitState();
+	//this->hash = SHA256::InitState();
 
 }
 
