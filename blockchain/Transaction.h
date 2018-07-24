@@ -22,7 +22,8 @@ public :
 	void inputTransaction(const TransactionData&);
 	void inputTransaction(const unsigned char& ,const bool& ,const unsigned char& ,const unsigned int& ,const unsigned int& ,const unsigned char&/*, const unsigned int&*/ );
 	void sign_Transaction();
-	void getHash(const Transaction&);
+	unsigned char* getHash(const Transaction&);
+	unsigned char* getHash();
 	void setNull();
 	Transaction getTransaction();
 	
@@ -33,6 +34,7 @@ Transaction::Transaction() {
 }
 
 Transaction::Transaction(const TransactionData &TxData) {
+	setNull();
 	hash = TxData.hash;
 	state_sign = TxData.state_sign;
 	toAddress = TxData.toAddress;
@@ -49,7 +51,7 @@ void Transaction::setNull() {
 	value = 0;
 	nonce = 0;
 	data = 0;
-	time = std::time(0);
+	time = (unsigned int)std::time(0);
 }
 void Transaction::inputTransaction(const TransactionData &TxData) {
 	this->hash = TxData.hash;
