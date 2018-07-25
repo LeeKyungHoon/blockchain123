@@ -1,6 +1,9 @@
 #include"Transaction.h"
 #include"KISA_SHA256.h"
+#include"TransactionUtility.h"
 //#include"cryptopp700/sha.h"
+
+using namespace TransactionUtility;
 
 void Transaction::sign_Transaction() {
 	this->state_sign = true;
@@ -18,7 +21,6 @@ unsigned char* Transaction::getHash(const Transaction &Tx ) {
 	
 	SHA256_Encrpyt((unsigned char*)txString.c_str(), txString.length(), encryption_txStr);
 
-
 	//CryptoPP::SHA256 calHash;
 	//this->hash = 
 
@@ -26,17 +28,31 @@ unsigned char* Transaction::getHash(const Transaction &Tx ) {
 }
 
 unsigned char* Transaction::getHash() {
-	unsigned char* input = new unsigned char[32];
-	unsigned char * encryption_txStr = new unsigned char[32];
+	TxUtil util;
+	unsigned char* input = new unsigned char[32]{ 0 };
+	unsigned char * encryption_txStr = new unsigned char[32]{0};
+	
+	input = util.addCharP(input,this->state_sign);
 
-	input = (unsigned char*)"hello";
+	printf("%s\n", input);
+	printf("%p\n", input);
+
+	//this->toAddress;
+	//this->value;
+	//this->nonce;
+	//this->data;
+	//this->time;
+	//input = (unsigned char*)"hello";
+
+	/*const unsigned char * test = (unsigned char*)"hello world";
+
+	printf("%p\n", test);*/
 
 	SHA256_Encrpyt(input, 32, encryption_txStr);
 
 	return encryption_txStr;
 
 }
-
 
 Transaction Transaction::getTransaction() {
 
@@ -49,7 +65,9 @@ int main(void) {
 
 	for (int i = 0; i < 32; i++) {
 		printf("%02x", result[i]);
-	}
+	};
+
+	system("pause");
 
 	return 0;
 }
