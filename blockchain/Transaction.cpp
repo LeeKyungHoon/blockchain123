@@ -34,8 +34,6 @@ unsigned char* Transaction::getHash() {
 	
 	input = util.addCharP(input,this->state_sign);
 
-	printf("%s\n", input);
-	printf("%p\n", input);
 
 	//this->toAddress;
 	//this->value;
