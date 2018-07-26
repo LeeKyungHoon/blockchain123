@@ -154,6 +154,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Transaction.h" />
+    <ClInclude Include="transactionBase.h" />
     <ClInclude Include="TransactionUtility.h" />
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +167,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Transaction.cpp" />
+    <ClCompile Include="transactionBase.cpp" />
     <ClCompile Include="TransactionUtility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

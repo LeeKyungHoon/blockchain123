@@ -16,6 +16,9 @@
     <Filter Include="sha256">
       <UniqueIdentifier>{8b838e22-adb9-4bb9-bb6a-13d2a265b9a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="transaction">
+      <UniqueIdentifier>{eafcbf79-9685-4b34-aeb3-13692bb8da4a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -27,17 +30,20 @@
     <ClInclude Include="block.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Transaction.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Blockheader.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="TransactionUtility.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="KISA_SHA256.h">
       <Filter>sha256</Filter>
+    </ClInclude>
+    <ClInclude Include="transactionBase.h">
+      <Filter>transaction</Filter>
+    </ClInclude>
+    <ClInclude Include="TransactionUtility.h">
+      <Filter>transaction</Filter>
+    </ClInclude>
+    <ClInclude Include="Transaction.h">
+      <Filter>transaction</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -47,14 +53,17 @@
     <ClCompile Include="blockchain.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Transaction.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="TransactionUtility.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="KISA_SHA256.c">
       <Filter>sha256</Filter>
+    </ClCompile>
+    <ClCompile Include="transactionBase.cpp">
+      <Filter>transaction</Filter>
+    </ClCompile>
+    <ClCompile Include="TransactionUtility.cpp">
+      <Filter>transaction</Filter>
+    </ClCompile>
+    <ClCompile Include="Transaction.cpp">
+      <Filter>transaction</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

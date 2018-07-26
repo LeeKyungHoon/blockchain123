@@ -1,14 +1,17 @@
 #pragma once
 
+#include"KISA_SHA256.h"
+#include<string>
+#include<chrono>
+#include<ctime>
+
 namespace TransactionUtility{
 
 	class TxUtil {
-
 	public :
-		unsigned char* addCharP(unsigned char* , bool);
-		unsigned char* addCharP(unsigned char*, unsigned char*);
-		unsigned char* addCharP(unsigned char*, unsigned int);
-
+		unsigned char* getTime();
+		unsigned char* getHash();
+		unsigned char* combElem();
 	};
 
 }
