@@ -1,7 +1,6 @@
 #pragma once
 
 #include"transactionBase.h"
-#include"TransactionUtility.h"
 
 TransactionBase::TransactionBase() {
 
@@ -28,7 +27,7 @@ TransactionBase::TransactionBase(const char* toAddr, const char* val, const char
 	txVal = (unsigned char*)val;
 	txNonce = (unsigned char*)nonce;
 	txCont = (unsigned char*)cont;
-	txTime = TransactionUtility::TxUtil::getTime();
+	txTime = util.getTime();
 }
 
 void TransactionBase::setTransactionBase(const TransactionBase& txBase) {

@@ -4,8 +4,12 @@
 #include<chrono>
 #include<time.h>
 #include<ctime>
+#include"TransactionUtility.h"
 
 class TransactionBase {
+private :
+	TransactionUtility::TxUtil util;
+
 public:
 	unsigned char * txHash;
 	unsigned char * txToAddr;

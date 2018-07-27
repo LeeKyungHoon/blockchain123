@@ -6,15 +6,15 @@ using namespace TransactionUtility;
 using namespace std::chrono;
 
 
-unsigned char * TxUtil::combElem() {
+unsigned char * TxUtil::combElem(const TransactionBase& txBase) {
 
 
 
 
 }
 
-unsigned char * TxUtil::getHash() {
-	unsigned char* combinedElem = combElem();
+unsigned char * TxUtil::getHash(const TransactionBase& txBase) {
+	unsigned char* combinedElem = combElem(txBase);
 
 
 
@@ -31,7 +31,7 @@ unsigned char* TxUtil::getTime() {
 	//std::cout << std::ctime(&t) << std::endl;
 	//std::cout << fractional_seconds << std::endl;
 
-
+	return 0;
 }
 
 
