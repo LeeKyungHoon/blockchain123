@@ -2,8 +2,6 @@
 
 #include<string>
 #include<chrono>
-#include<time.h>
-#include<ctime>
 #include"TransactionUtility.h"
 
 class TransactionBase {

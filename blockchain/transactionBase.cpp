@@ -54,8 +54,13 @@ void TransactionBase::setNull() {
 
 int main(void) {
 
-	TransactionBase *tx = new TransactionBase("100", "100", "100", "100");
-	printf("%s", tx->getTransactionBase().txHash);
+	//TransactionBase *tx = new TransactionBase("100", "100", "100", "100");
+	//printf("%s", tx->getTransactionBase().txHash);
+
+	using namespace std::chrono;
+	milliseconds ms = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
+	std::milli mil;
+	printf("%d", ms);
 	system("pause");
 	return 0;
 
