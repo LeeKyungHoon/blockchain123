@@ -5,42 +5,70 @@
 using namespace TransactionUtility;
 using namespace std::chrono;
 
-
-unsigned char * TxUtil::combElem(const TransactionBase& txBase) {
-
-
-
-
-}
-
-unsigned char * TxUtil::getHash(const TransactionBase& txBase) {
-	unsigned char* combinedElem = combElem(txBase);
-
-
-
-}
-
 unsigned char* TxUtil::getTime() {
-	high_resolution_clock::time_point p = high_resolution_clock::now();
 
-	milliseconds ms = duration_cast<milliseconds>(p.time_since_epoch());
-
-	seconds s = duration_cast<seconds>(ms);
-	std::time_t t = s.count();
-	std::size_t fractional_seconds = ms.count() % 1000;
-	//std::cout << std::ctime(&t) << std::endl;
-	//std::cout << fractional_seconds << std::endl;
 
 	return 0;
 }
 
+unsigned char* TransactionUtility::TxUtil::calculateHash(unsigned char * addr, unsigned char * val, unsigned char * nonce, unsigned char * cont, unsigned char * time)
+{
+	unsigned char * str = new unsigned char[32]{ 0 };
+	//unsigned char * encrpytStr = new unsigned char[32]{ 0 };
 
+	TxUtil::add(str, addr);
+	TxUtil::add(str, val);
+	TxUtil::add(str, nonce);
+	TxUtil::add(str, cont);
+	TxUtil::add(str, time);
 
+	//SHA256_Encrpyt(str, 32, encrpytStr);
 
+	return str;
+}
 
+void TransactionUtility::TxUtil::add(unsigned char* &dest, unsigned char* src) {
 
+	int i = 0;
+	int dest_cnt = 0;
+	int src_cnt = 0;
 
+	if (dest != nullptr && src != nullptr) {
 
+		while (true) {
+			if (dest[i] == '\0')break;
+			else
+			{
+				dest_cnt++;
+			}
+			i++;
+		}
+		i = 0;
+		while (true) {
+			if (src[i] == '\0')break;
+			else
+			{
+				src_cnt++;
+			}
+			i++;
+		}
+		unsigned char * temp = new unsigned char[dest_cnt + src_cnt + 1];
+		for (int j = 0; j < dest_cnt; j++) {
+			temp[j] = dest[j];
+		}
+
+		i = 0;
+		for (int i = 0; i < dest_cnt + src_cnt + 1; i++)
+		{
+			if (src[i] == '\0') { temp[dest_cnt+i] = '\0'; break; }
+			else {
+				temp[dest_cnt + i] = src[i];
+			}
+		}
+
+		dest = temp;
+	}
+}
 
 
 

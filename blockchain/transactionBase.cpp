@@ -22,12 +22,14 @@ TransactionBase::TransactionBase(const TransactionBase& txBase) {
 
 TransactionBase::TransactionBase(const char* toAddr, const char* val, const char* nonce, const char* cont)
 {
+	TransactionUtility::TxUtil util;
 	setNull();
 	txToAddr = (unsigned char*)toAddr;
 	txVal = (unsigned char*)val;
 	txNonce = (unsigned char*)nonce;
 	txCont = (unsigned char*)cont;
 	txTime = util.getTime();
+	txHash = util.calculateHash(this->txToAddr,this->txVal, this->txNonce, this->txCont, this->txTime);
 }
 
 void TransactionBase::setTransactionBase(const TransactionBase& txBase) {
@@ -49,14 +51,12 @@ void TransactionBase::setNull() {
 	txCont = (unsigned char*)"";
 	txTime = (unsigned char*)"";
 }
-//
-//int main(void) {
-//
-//	TransactionBase *tx = new TransactionBase("100", "100", "100", "100");
-//	printf("%s", tx->getTransactionBase().txTime);
-//	printf("%d", time(0));
-//
-//	system("pause");
-//	return 0;
-//
-//}
+
+int main(void) {
+
+	TransactionBase *tx = new TransactionBase("100", "100", "100", "100");
+	printf("%s", tx->getTransactionBase().txHash);
+	system("pause");
+	return 0;
+
+}
