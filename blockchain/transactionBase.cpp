@@ -1,7 +1,11 @@
 #pragma once
 
 #include"transactionBase.h"
-
+#include<Windows.h>
+#include<string>
+#include<sstream>
+#include<iostream>
+#include<stdlib.h>
 TransactionBase::TransactionBase() {
 
 	setNull();
@@ -28,8 +32,8 @@ TransactionBase::TransactionBase(const char* toAddr, const char* val, const char
 	txVal = (unsigned char*)val;
 	txNonce = (unsigned char*)nonce;
 	txCont = (unsigned char*)cont;
-	txTime = util.getTime();
-	txHash = util.calculateHash(this->txToAddr,this->txVal, this->txNonce, this->txCont, this->txTime);
+	util.getTime(txTime);
+	util.calculateHash(this->txHash,this->txToAddr, this->txVal, this->txNonce, this->txCont, this->txTime);
 }
 
 void TransactionBase::setTransactionBase(const TransactionBase& txBase) {
@@ -54,14 +58,11 @@ void TransactionBase::setNull() {
 
 int main(void) {
 
-	//TransactionBase *tx = new TransactionBase("100", "100", "100", "100");
-	//printf("%s", tx->getTransactionBase().txHash);
+	TransactionBase *tx = new TransactionBase("100", "100", "100", "100");
+	printf("%s", tx->getTransactionBase().txHash);
 
-	using namespace std::chrono;
-	milliseconds ms = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
-	std::milli mil;
-	printf("%d", ms);
 	system("pause");
 	return 0;
 
 }
+

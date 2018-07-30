@@ -1,19 +1,49 @@
 #pragma once
 
-
 #include"TransactionUtility.h"
 
 using namespace TransactionUtility;
-using namespace std::chrono;
 
-unsigned char* TxUtil::getTime() {
+void TxUtil::getTime(unsigned char* &src) {
+	unsigned char* time = new unsigned char[18]{ 0 };
 
+	SYSTEMTIME utc;
+	SYSTEMTIME cur_time;
+	TIME_ZONE_INFORMATION tzi;
+	GetSystemTime(&utc);
+	GetTimeZoneInformation(&tzi);
+	SystemTimeToTzSpecificLocalTime(&tzi, &utc, &cur_time);
 
+	unsigned char* year = new unsigned char[4]{ 0 };
+	unsigned char* month = new unsigned char[2]{ 0 };
+	unsigned char* day = new unsigned char[2]{ 0 };
+	unsigned char* hour = new unsigned char[2]{ 0 };
+	unsigned char* min = new unsigned char[2]{ 0 };
+	unsigned char* sec = new unsigned char[2]{ 0 };
+	unsigned char* milsec = new unsigned char[4]{ 0 };
 
-	return 0;
+	_itoa_s((__int16)cur_time.wYear, (char*)year, _msize(year) + 1, 10);
+	_itoa_s((__int16)cur_time.wMonth, (char*)month, _msize(month) + 1, 10);
+	_itoa_s((__int16)cur_time.wDay, (char*)day, _msize(day) + 1, 10);
+	_itoa_s((__int16)cur_time.wHour, (char*)hour, _msize(hour) + 1, 10);
+	_itoa_s((__int16)cur_time.wMinute, (char*)min, _msize(min) + 1, 10);
+	_itoa_s((__int16)cur_time.wSecond, (char*)sec, _msize(sec) + 1, 10);
+	_itoa_s((__int16)cur_time.wMilliseconds, (char*)milsec, _msize(milsec) + 1, 10);
+
+	TxUtil::add(time,year);
+	TxUtil::add(time,month);
+	TxUtil::add(time,day);
+	TxUtil::add(time,hour);
+	TxUtil::add(time,min);
+	TxUtil::add(time,sec);
+	TxUtil::add(time,milsec);
+
+	src = time;
+	time = { 0 };
+	delete[] time;
 }
 
-unsigned char* TransactionUtility::TxUtil::calculateHash(unsigned char * addr, unsigned char * val, unsigned char * nonce, unsigned char * cont, unsigned char * time)
+void TxUtil::calculateHash(unsigned char* &hash, unsigned char * addr, unsigned char * val, unsigned char * nonce, unsigned char * cont, unsigned char * time)
 {
 	unsigned char * str = new unsigned char[32]{ 0 };
 	//unsigned char * encrpytStr = new unsigned char[32]{ 0 };
@@ -26,10 +56,13 @@ unsigned char* TransactionUtility::TxUtil::calculateHash(unsigned char * addr, u
 
 	//SHA256_Encrpyt(str, 32, encrpytStr);
 
-	return str;
+	hash = str;
+	str = { 0 };
+
+	delete[] str;
 }
 
-void TransactionUtility::TxUtil::add(unsigned char* &dest, unsigned char* src) {
+void TxUtil::add(unsigned char* &dest, unsigned char* src) {
 
 	int i = 0;
 	int dest_cnt = 0;
@@ -62,20 +95,19 @@ void TransactionUtility::TxUtil::add(unsigned char* &dest, unsigned char* src) {
 		i = 0;
 		for (int i = 0; i < dest_cnt + src_cnt + 1; i++)
 		{
-			if (src[i] == '\0') { temp[dest_cnt+i] = '\0'; break; }
+			if (src[i] == '\0') { temp[dest_cnt + i] = '\0'; break; }
 			else {
 				temp[dest_cnt + i] = src[i];
 			}
 		}
 
 		dest = temp;
+
+		temp = { 0 };
+
+		delete[] temp;
 	}
 }
-
-
-
-
-
 
 
 
