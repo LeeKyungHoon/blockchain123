@@ -1,5 +1,12 @@
 #pragma once
+#include<iostream>
 #include<Windows.h>
+#include<cstring>
+#include"cryptopp700/sha.h"
+#include"cryptopp700/filters.h"
+#include"cryptopp700/hex.h"
+
+using namespace CryptoPP;
 
 namespace TransactionUtility{
 

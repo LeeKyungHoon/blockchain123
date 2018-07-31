@@ -1,16 +1,15 @@
 
 #include"Blockheader.h"
-#include"Transaction.h"
-
-class Block :public Blockheader {
+#include"transactionList.h"
+class Block {
 private:
 	Blockheader header;
-	Transaction blockTx;
+	TransactionList List;
+
 public:
 	Block();
 	void setNull();
 	Blockheader getHeader();
-	Transaction getTransaction();
 };
 
 inline Block::Block() {
@@ -20,16 +19,15 @@ inline Block::Block() {
 inline void Block::setNull()
 {
 	Block::header.setNull();
-	Block::blockTx.setNull();
 }
 
 Blockheader Block::getHeader() {
 	Blockheader block;
-	block.hashPrevBlock = hashPrevBlock;
-	block.hashMerkleTree = hashMerkleTree;
-	block.Time = Time;
-	block.Difficulty = Difficulty;
-	block.Nonce = Nonce;
+	block.hashPrevBlock = header.hashPrevBlock;
+	block.hashMerkleTree = header.hashMerkleTree;
+	block.Time = header.Time;
+	block.Difficulty = header.Difficulty;
+	block.Nonce = header.Nonce;
 }
 
 

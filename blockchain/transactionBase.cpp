@@ -1,18 +1,14 @@
 #pragma once
 
 #include"transactionBase.h"
-#include<Windows.h>
-#include<string>
-#include<sstream>
-#include<iostream>
-#include<stdlib.h>
-TransactionBase::TransactionBase() {
+
+inline TransactionBase::TransactionBase() {
 
 	setNull();
 
 }
 
-TransactionBase::TransactionBase(const TransactionBase& txBase) {
+inline TransactionBase::TransactionBase(const TransactionBase& txBase) {
 
 	setNull();
 	txHash = txBase.txHash;
@@ -24,7 +20,7 @@ TransactionBase::TransactionBase(const TransactionBase& txBase) {
 
 }
 
-TransactionBase::TransactionBase(const char* toAddr, const char* val, const char* nonce, const char* cont)
+inline TransactionBase::TransactionBase(const char* toAddr, const char* val, const char* nonce, const char* cont)
 {
 	TransactionUtility::TxUtil util;
 	setNull();
@@ -56,13 +52,13 @@ void TransactionBase::setNull() {
 	txTime = (unsigned char*)"";
 }
 
-int main(void) {
-
-	TransactionBase *tx = new TransactionBase("100", "100", "100", "100");
-	printf("%s", tx->getTransactionBase().txHash);
-
-	system("pause");
-	return 0;
-
-}
+//int main(void) {
+//
+//	TransactionBase *tx = new TransactionBase("100", "100", "100", "100");
+//	printf("hash : %s, addr : %s, val : %s, nonce : %s, cont : %s, time : %s\n", tx->txHash, tx->txToAddr,tx->txVal,tx->txNonce,tx->txCont,tx->txTime);
+//
+//	system("pause");
+//	return 0;
+//
+//}
 

@@ -1,9 +1,9 @@
 
-
 class Blockheader {
 	
 
 public :
+
 	//int32_t version;//버전을 사용하지 않음;
 	unsigned char *hashPrevBlock;
 	unsigned char *hashMerkleTree;
