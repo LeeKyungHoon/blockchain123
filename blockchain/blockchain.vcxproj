@@ -320,6 +320,7 @@
     <ClInclude Include="TransactionUtility.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="block.cpp" />
     <ClCompile Include="blockchain.cpp" />
     <ClCompile Include="cryptopp700\3way.cpp" />
     <ClCompile Include="cryptopp700\adler32.cpp" />

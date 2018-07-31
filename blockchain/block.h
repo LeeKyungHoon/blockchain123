@@ -2,33 +2,21 @@
 #include"Blockheader.h"
 #include"transactionList.h"
 class Block {
-private:
+
+public: // arg
 	Blockheader header;
 	TransactionList List;
 
-public:
+
+public: //function
 	Block();
+	Block(const Block&);
 	void setNull();
 	Blockheader getHeader();
+	TransactionList getList();
+	void makeTransaction(const unsigned char* toAddr, const unsigned char* value, const unsigned char* nonce, const unsigned char* contents);
 };
 
-inline Block::Block() {
-	setNull();
-}
-
-inline void Block::setNull()
-{
-	Block::header.setNull();
-}
-
-Blockheader Block::getHeader() {
-	Blockheader block;
-	block.hashPrevBlock = header.hashPrevBlock;
-	block.hashMerkleTree = header.hashMerkleTree;
-	block.Time = header.Time;
-	block.Difficulty = header.Difficulty;
-	block.Nonce = header.Nonce;
-}
 
 
 
