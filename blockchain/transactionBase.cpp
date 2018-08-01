@@ -2,13 +2,13 @@
 
 #include"transactionBase.h"
 
-inline TransactionBase::TransactionBase() {
+TransactionBase::TransactionBase() {
 
 	setNull();
 
 }
 
-inline TransactionBase::TransactionBase(const TransactionBase& txBase) {
+TransactionBase::TransactionBase(const TransactionBase& txBase) {
 
 	setNull();
 	txHash = txBase.txHash;
@@ -20,7 +20,7 @@ inline TransactionBase::TransactionBase(const TransactionBase& txBase) {
 
 }
 
-inline TransactionBase::TransactionBase(const char* toAddr, const char* val, const char* nonce, const char* cont)
+TransactionBase::TransactionBase(const char* toAddr, const char* val, const char* nonce, const char* cont)
 {
 	TransactionUtility::TxUtil util;
 	setNull();

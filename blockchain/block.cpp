@@ -2,39 +2,42 @@
 #include"block.h"
 
 
-inline Block::Block() {
-	setNull();
-}
+Block::Block() { header = new Blockheader(); List = new TransactionList(); }
 
-inline Block::Block(const Block& block) {
-	setNull();
-	header = block.header;
-	List = block.List;
-}
+Block::Block(const Block& block) { header = block.header; List = block.List; }
 
-inline void Block::setNull()
+Blockheader Block::getHeader() { return *header; }
+
+TransactionList Block::getList() { return *List; }
+
+void Block::makeTransaction(const char * toAddr, const char * value, const char * nonce, const char * contents)
 {
-	Block::header.setNull();
-}
-
-Blockheader Block::getHeader() {
-
-	return this->header;
+	List->add(new TransactionBase(toAddr, value, nonce, contents));
 
 }
 
-TransactionList Block::getList() {
-	return this->List;
-}
-
-void Block::makeTransaction(const unsigned char * toAddr, const unsigned char * value, const unsigned char * nonce, const unsigned char * contents)
-{
-
+Block::~Block() {
+	delete header;
+	delete List;
 }
 
 
 int main(void) {
 
-	Block block;
+	Block *block1 = new Block();
+	Block *block2 = new Block();
+	block1->makeTransaction("100", "100", "100", "100");
+	block2->makeTransaction("200", "200", "200", "200");
 
+	for (std::pair<unsigned char*, TransactionBase> map : block1->List->txMap) {
+		printf("map stored hash : %s\n txHash : %s\n txAddr : %s\n txVal : %s\n txNonce : %s\n txCont : %s\n txTime : %s\n", map.first, map.second.txHash, map.second.txToAddr, map.second.txVal, map.second.txNonce, map.second.txCont, map.second.txTime);
+	}
+
+	for (std::pair<unsigned char*, TransactionBase> map : block2->List->txMap) {
+		printf("map stored hash : %s\n txHash : %s\n txAddr : %s\n txVal : %s\n txNonce : %s\n txCont : %s\n txTime : %s\n", map.first, map.second.txHash, map.second.txToAddr, map.second.txVal, map.second.txNonce, map.second.txCont, map.second.txTime);
+	}
+
+	system("pause");
+
+	return 0;
 }

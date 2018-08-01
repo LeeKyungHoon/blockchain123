@@ -12,9 +12,9 @@ public:
 	unsigned char * txTime;
 
 public:
-	inline TransactionBase();
-	inline TransactionBase(const TransactionBase&);
-	inline TransactionBase(const char* , const char* , const char* , const char* );
+	TransactionBase();
+	TransactionBase(const TransactionBase&);
+	TransactionBase(const char*, const char*, const char*, const char*);
 	void setNull();
 	TransactionBase getTransactionBase();
 	void setTransactionBase(const TransactionBase&);

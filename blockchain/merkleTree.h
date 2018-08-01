@@ -1,14 +1,14 @@
 
+//#include"Node.h"
+
 namespace merkle {
+	template<typename T>
 	class merkleTree {
 	private:
-		unsigned char* merkleRoot;
-		unsigned int levels = 0;
 
 	public:
-		merkleTree();
-		unsigned char* getRoot() { return merkleRoot; };
-
+		merkle::merkleTree<T>();
+		void getRoot(const unsigned char* &root, const T& list);
 	};
 
 }

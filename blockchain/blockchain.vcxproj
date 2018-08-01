@@ -313,6 +313,7 @@
     <ClInclude Include="cryptopp700\zinflate.h" />
     <ClInclude Include="cryptopp700\zlib.h" />
     <ClInclude Include="merkleTree.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="transactionBase.h" />
@@ -322,6 +323,7 @@
   <ItemGroup>
     <ClCompile Include="block.cpp" />
     <ClCompile Include="blockchain.cpp" />
+    <ClCompile Include="blockheader.cpp" />
     <ClCompile Include="cryptopp700\3way.cpp" />
     <ClCompile Include="cryptopp700\adler32.cpp" />
     <ClCompile Include="cryptopp700\algebra.cpp" />

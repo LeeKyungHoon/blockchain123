@@ -9,5 +9,5 @@ public:
 	transactionMap txMap;
 	TransactionList();
 	TransactionList(const transactionMap&);
-	void add(unsigned char*, TransactionBase);
+	void add(const TransactionBase*);
 };

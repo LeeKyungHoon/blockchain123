@@ -540,6 +540,9 @@
     <ClInclude Include="block.h">
       <Filter>block</Filter>
     </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1057,6 +1060,9 @@
     </ClCompile>
     <ClCompile Include="block.cpp">
       <Filter>block</Filter>
+    </ClCompile>
+    <ClCompile Include="blockheader.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

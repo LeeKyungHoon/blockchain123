@@ -1,32 +1,26 @@
 
+#include"merkleTree.h"
+
+typedef struct headerStruct
+{
+	unsigned char* hashPrevBlock;
+	unsigned char* hashMerkleRoot;
+	unsigned char* Time;
+	unsigned char* Difficulty;
+	unsigned char* Nonce;
+}header;
+
 class Blockheader {
-	
 
-public :
+public:
+	header hs;
 
-	//int32_t version;//버전을 사용하지 않음;
-	unsigned char *hashPrevBlock;
-	unsigned char *hashMerkleTree;
-	unsigned int Time;
-	unsigned int Difficulty;
-	unsigned int Nonce;
-
+public: //function
 	Blockheader();
-	void setNull() ;
-	void setBlockheader(unsigned char *hashPrevBlock, unsigned char *hashMerkleTree, unsigned int Time, unsigned int Difficulty, unsigned int Nonce);
+	Blockheader(const Blockheader&);
+	Blockheader(unsigned char *, unsigned char*, unsigned char*, unsigned char*);
+	void setNull();
 
-};
-
-Blockheader::Blockheader() {
-	setNull();
-};
-
-inline void Blockheader::setNull() {
-	hashPrevBlock = 0;
-	hashMerkleTree = 0;
-	Time = 0;
-	Difficulty = 0;
-	Nonce = 0;
 };
 
 
