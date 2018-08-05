@@ -1,14 +1,14 @@
 
 //#include"Node.h"
+#include"transactionList.h"
+#include<vector>
 
 namespace merkle {
-	template<typename T>
 	class merkleTree {
-	private:
+		std::vector<unsigned char*> __iterator;
 
 	public:
-		merkle::merkleTree<T>();
-		void getRoot(const unsigned char* &root, const T& list);
+		void getRoot(unsigned char* &root, const TransactionList& list);
 	};
 
 }

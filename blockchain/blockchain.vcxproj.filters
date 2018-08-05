@@ -33,9 +33,6 @@
     <ClInclude Include="targetver.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Blockheader.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="transactionBase.h">
       <Filter>transaction</Filter>
     </ClInclude>
@@ -542,6 +539,9 @@
     </ClInclude>
     <ClInclude Include="Node.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Blockheader.h">
+      <Filter>block</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1062,7 +1062,7 @@
       <Filter>block</Filter>
     </ClCompile>
     <ClCompile Include="blockheader.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>block</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,14 @@ Blockheader::Blockheader(const Blockheader& header) {
 	Blockheader::Blockheader(header.hs.hashPrevBlock, header.hs.hashMerkleRoot, header.hs.Difficulty, header.hs.Nonce);
 }
 
-Blockheader::Blockheader(unsigned char * hashPrevBlock, unsigned char *hashMerkleRoot, unsigned char * difiiculty, unsigned char * Nonce)
+Blockheader::Blockheader(unsigned char* hashPrevBlock, const TransactionList* list) {
+	setNull();
+	hs.hashPrevBlock = hashPrevBlock;
+	merkleT.getRoot(hs.hashMerkleRoot, *list);
+	util.getTime(hs.Time);
+}
+
+Blockheader::Blockheader(unsigned char * hashPrevBlock, unsigned char *hashMerkleRoot, unsigned int difiiculty, unsigned int Nonce)
 {
 	setNull();
 	hs.hashPrevBlock = hashPrevBlock;
@@ -19,11 +26,12 @@ Blockheader::Blockheader(unsigned char * hashPrevBlock, unsigned char *hashMerkl
 	hs.Nonce = Nonce;
 }
 
+
 void Blockheader::setNull() {
-	hs.hashPrevBlock = 0;
-	hs.hashMerkleRoot = 0;
-	hs.Time = 0;
-	hs.Difficulty = 0;
+	hs.hashPrevBlock = (unsigned char*)"0";
+	hs.hashMerkleRoot = (unsigned char*)"0";
+	hs.Time = (unsigned char*)"0";
+	hs.Difficulty = 3;
 	hs.Nonce = 0;
 }
 

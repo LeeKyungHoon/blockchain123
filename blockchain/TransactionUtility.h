@@ -8,13 +8,16 @@
 
 using namespace CryptoPP;
 
-namespace TransactionUtility{
+namespace TransactionUtility {
 
 	class TxUtil {
-	public :
+	public:
 		void getTime(unsigned char* &);
-		void calculateHash(unsigned char * &,unsigned char*,unsigned char*, unsigned char*, unsigned char*, unsigned char*);
-		void add(unsigned char* &, unsigned char* );
+		void calculateHash(unsigned char * &, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*);
+		void calculateHash(unsigned char * &, unsigned char*, unsigned char*, unsigned char*, unsigned int, unsigned int);
+		void calculateHash(unsigned char * &);
+		void add(unsigned char* &, unsigned char*);
+		void add(unsigned char* &, unsigned int);
 	};
 
 }

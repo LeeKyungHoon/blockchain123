@@ -6,6 +6,7 @@
 #include<cstring>
 
 void TransactionUtility::TxUtil::getTime(unsigned char* &src) {
+
 	unsigned char* time = new unsigned char[18]{ 0 };
 
 	SYSTEMTIME utc;
@@ -31,24 +32,33 @@ void TransactionUtility::TxUtil::getTime(unsigned char* &src) {
 	_itoa_s((__int16)cur_time.wSecond, (char*)sec, _msize(sec) + 1, 10);
 	_itoa_s((__int16)cur_time.wMilliseconds, (char*)milsec, _msize(milsec) + 1, 10);
 
-	TransactionUtility::TxUtil::add(time,year);
-	TransactionUtility::TxUtil::add(time,month);
-	TransactionUtility::TxUtil::add(time,day);
-	TransactionUtility::TxUtil::add(time,hour);
-	TransactionUtility::TxUtil::add(time,min);
-	TransactionUtility::TxUtil::add(time,sec);
-	TransactionUtility::TxUtil::add(time,milsec);
+	TransactionUtility::TxUtil::add(time, year);
+	TransactionUtility::TxUtil::add(time, month);
+	TransactionUtility::TxUtil::add(time, day);
+	TransactionUtility::TxUtil::add(time, hour);
+	TransactionUtility::TxUtil::add(time, min);
+	TransactionUtility::TxUtil::add(time, sec);
+	TransactionUtility::TxUtil::add(time, milsec);
 
-	src = time;
-	time = { 0 };
-	delete[] time;
+	//memcpy_s(src, sizeof(*src), time, _msize(time));
+	src = (unsigned char*)"";
+	add(src, time);
+	delete[]milsec;
+	delete[]sec;
+	delete[]min;
+	delete[]hour;
+	delete[]day;
+	delete[]month;
+	delete[]year;
+	//time = { 0 };
+	//delete[]time;
 }
 
 void TransactionUtility::TxUtil::calculateHash(unsigned char* &hash, unsigned char * addr, unsigned char * val, unsigned char * nonce, unsigned char * cont, unsigned char * time)
 {
 	unsigned char * str = new unsigned char[64]{ 0 };
 	std::string digest;
-	SHA256 sha256;
+	CryptoPP::SHA256 sha256;
 
 	TransactionUtility::TxUtil::add(str, addr);
 	TransactionUtility::TxUtil::add(str, val);
@@ -56,16 +66,49 @@ void TransactionUtility::TxUtil::calculateHash(unsigned char* &hash, unsigned ch
 	TransactionUtility::TxUtil::add(str, cont);
 	TransactionUtility::TxUtil::add(str, time);
 
-	StringSource s((const char*)str , true, new HashFilter(sha256, new HexEncoder(new StringSink(digest))));
+	CryptoPP::StringSource *s = new CryptoPP::StringSource((const char*)str, true, new CryptoPP::HashFilter(sha256, new CryptoPP::HexEncoder(new CryptoPP::StringSink(digest))));
 
-	//std::strcpy_s(hash, strlen(digest.c_str()), digest);
 	add(hash, (unsigned char*)digest.c_str());
-	//hash = (unsigned char*)digest.c_str();
-	
-	
-	str = { 0 };
 
-	delete[] str;
+
+	delete[] s;
+	//delete[] str;
+}
+
+void TransactionUtility::TxUtil::calculateHash(unsigned char *& blockHash, unsigned char * hashPrevBlock, unsigned char * merkleRoot, unsigned char * time, unsigned int difficulty, unsigned int nonce)
+{
+	unsigned char * str = new unsigned char[64]{ 0 };
+	std::string digest;
+	CryptoPP::SHA256 sha256;
+
+	TransactionUtility::TxUtil::add(str, blockHash);
+	TransactionUtility::TxUtil::add(str, hashPrevBlock);
+	TransactionUtility::TxUtil::add(str, merkleRoot);
+	TransactionUtility::TxUtil::add(str, time);
+	TransactionUtility::TxUtil::add(str, difficulty);
+	TransactionUtility::TxUtil::add(str, nonce);
+
+	CryptoPP::StringSource *s = new CryptoPP::StringSource((const char*)str, true, new CryptoPP::HashFilter(sha256, new CryptoPP::HexEncoder(new CryptoPP::StringSink(digest))));
+
+	blockHash = (unsigned char*)"";
+	add(blockHash, (unsigned char*)digest.c_str());
+
+
+	delete[] s;
+	//delete[] str;
+}
+
+void TransactionUtility::TxUtil::calculateHash(unsigned char* & src) {
+	CryptoPP::SHA256 sha256;
+	std::string digest;
+
+	CryptoPP::StringSource *s = new CryptoPP::StringSource((const char*)src, true, new CryptoPP::HashFilter(sha256, new CryptoPP::HexEncoder(new CryptoPP::StringSink(digest))));
+
+	src = (unsigned char*)"";
+	add(src, (unsigned char*)digest.c_str());
+
+
+	delete[] s;
 }
 
 void TransactionUtility::TxUtil::add(unsigned char* &dest, unsigned char* src) {
@@ -109,8 +152,47 @@ void TransactionUtility::TxUtil::add(unsigned char* &dest, unsigned char* src) {
 
 		dest = temp;
 
-		temp = { 0 };
+		//delete[] temp;
+	}
+}
+
+void TransactionUtility::TxUtil::add(unsigned char *& dest, unsigned int src)
+{
+
+	int i = 0;
+	int dest_cnt = 0;
+	int src_cnt = (src / 10) + 1;
+	unsigned char * strSrc = new unsigned char[src_cnt] { 0 };
+
+	if (dest != nullptr) {
+
+		while (true) {
+			if (dest[i] == '\0')break;
+			else
+			{
+				dest_cnt++;
+			}
+			i++;
+		}
+		_itoa_s(src, (char*)strSrc, _msize(strSrc) + 1, 10);
+		unsigned char * temp = new unsigned char[dest_cnt + src_cnt + 1]{ 0 };
+		for (int j = 0; j < dest_cnt; j++) {
+			temp[j] = dest[j];
+		}
+
+		i = 0;
+		for (int i = 0; i < dest_cnt + src_cnt + 1; i++)
+		{
+			if (strSrc[i] == '\0') { temp[dest_cnt + i] = '\0'; break; }
+			else {
+				temp[dest_cnt + i] = strSrc[i];
+			}
+		}
+		dest = temp;
 
 		delete[] temp;
 	}
+
+	delete[] strSrc;
+
 }
