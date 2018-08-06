@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="block.h" />
+    <ClInclude Include="blockchain.h" />
     <ClInclude Include="Blockheader.h" />
     <ClInclude Include="cryptopp700\3way.h" />
     <ClInclude Include="cryptopp700\adler32.h" />

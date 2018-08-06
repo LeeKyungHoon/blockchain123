@@ -23,6 +23,7 @@ public: //function
 	Blockheader(unsigned char* ,const TransactionList *);
 	Blockheader(unsigned char *, unsigned char*, unsigned int, unsigned int);
 	void setNull();
+	void setBlockHeader(unsigned char*, const TransactionList *);
 
 };
 

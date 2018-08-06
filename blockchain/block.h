@@ -7,6 +7,7 @@ public: // arg
 	Blockheader *header;
 	TransactionList *List;
 	unsigned char* blockHash;
+	Block * tail;
 
 public: //function
 	Block();

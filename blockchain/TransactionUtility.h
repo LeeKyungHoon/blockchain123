@@ -18,6 +18,7 @@ namespace TransactionUtility {
 		void calculateHash(unsigned char * &);
 		void add(unsigned char* &, unsigned char*);
 		void add(unsigned char* &, unsigned int);
+		void replace(unsigned char* &, unsigned char*);
 	};
 
 }

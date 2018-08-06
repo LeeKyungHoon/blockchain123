@@ -44,12 +44,12 @@ TransactionBase TransactionBase::getTransactionBase() {
 
 void TransactionBase::setNull() {
 
-	txHash = (unsigned char*)"";
-	txToAddr = (unsigned char*)"";
-	txVal = (unsigned char*)"";
-	txNonce = (unsigned char*)"";
-	txCont = (unsigned char*)"";
-	txTime = (unsigned char*)"";
+	txHash = nullptr;
+	txToAddr = nullptr;
+	txVal = nullptr;
+	txNonce = nullptr;
+	txCont = nullptr;
+	txTime = nullptr;
 }
 
 //int main(void) {

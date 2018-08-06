@@ -28,10 +28,18 @@ Blockheader::Blockheader(unsigned char * hashPrevBlock, unsigned char *hashMerkl
 
 
 void Blockheader::setNull() {
-	hs.hashPrevBlock = (unsigned char*)"0";
-	hs.hashMerkleRoot = (unsigned char*)"0";
-	hs.Time = (unsigned char*)"0";
-	hs.Difficulty = 3;
+	hs.hashPrevBlock = nullptr;
+	hs.hashMerkleRoot = nullptr;
+	hs.Time = nullptr;
+	hs.Difficulty = 4;
 	hs.Nonce = 0;
+}
+
+void Blockheader::setBlockHeader(unsigned char* hashPrevBlock, const TransactionList* list)
+{
+	setNull();
+	hs.hashPrevBlock = hashPrevBlock;
+	merkleT.getRoot(hs.hashMerkleRoot, *list);
+	util.getTime(hs.Time);
 }
 

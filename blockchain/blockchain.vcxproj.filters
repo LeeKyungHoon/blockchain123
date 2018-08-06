@@ -543,6 +543,9 @@
     <ClInclude Include="Blockheader.h">
       <Filter>block</Filter>
     </ClInclude>
+    <ClInclude Include="blockchain.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
