@@ -3,14 +3,12 @@
 
 class Blockchain {
 private:
-	Block * firstBlock;
-	Block * curBlockNode;
+	std::vector<Block*> chain;
 public:
 	Blockchain();
 	void geneBlock();
 	void makeNewBlock();
 	void mineBlock();
-	void occurTransaction();
-	void printBC();
+	void occurTransaction(std::string, std::string, std::string, std::string);
 
 };

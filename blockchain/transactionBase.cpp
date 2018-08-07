@@ -52,13 +52,3 @@ void TransactionBase::setNull() {
 	txTime = nullptr;
 }
 
-//int main(void) {
-//
-//	TransactionBase *tx = new TransactionBase("100", "100", "100", "100");
-//	printf("hash : %s, addr : %s, val : %s, nonce : %s, cont : %s, time : %s\n", tx->txHash, tx->txToAddr,tx->txVal,tx->txNonce,tx->txCont,tx->txTime);
-//
-//	system("pause");
-//	return 0;
-//
-//}
-
