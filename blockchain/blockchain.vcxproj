@@ -320,6 +320,7 @@
     <ClInclude Include="transactionBase.h" />
     <ClInclude Include="transactionList.h" />
     <ClInclude Include="TransactionUtility.h" />
+    <ClInclude Include="wallet.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="block.cpp" />
@@ -500,6 +501,7 @@
     <ClCompile Include="transactionBase.cpp" />
     <ClCompile Include="transactionList.cpp" />
     <ClCompile Include="TransactionUtility.cpp" />
+    <ClCompile Include="wallet.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="cryptopp700\cryptopp.rc" />

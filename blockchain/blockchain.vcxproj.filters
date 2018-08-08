@@ -25,6 +25,9 @@
     <Filter Include="block">
       <UniqueIdentifier>{6efdc1e4-469d-49e3-87c4-bb730c3943e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="wallet">
+      <UniqueIdentifier>{dd42a05c-b827-423b-a38b-3bd35b1c13c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -546,6 +549,9 @@
     <ClInclude Include="blockchain.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="wallet.h">
+      <Filter>wallet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1066,6 +1072,9 @@
     </ClCompile>
     <ClCompile Include="blockheader.cpp">
       <Filter>block</Filter>
+    </ClCompile>
+    <ClCompile Include="wallet.cpp">
+      <Filter>wallet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
