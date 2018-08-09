@@ -17,11 +17,11 @@ struct WalletData
 
 class Wallet {
 private:
-	std::vector<WalletData> keyPairsAndBalance;
 	Wallet() {};
 	Wallet(const Wallet& o_wallet);
 	~Wallet() {};
 public:
+	std::vector<WalletData> keyPairsAndBalance;
 	static Wallet* GetInstance() { static Wallet wallet; return &wallet; }
 	void geneKey();
 	void save();
@@ -29,7 +29,6 @@ public:
 	void signer(std::string &signature, std::string &message, const WalletData &wd);
 	void signer(std::string &signature, std::string &message, const CryptoPP::ECDSA<CryptoPP::ECP, CryptoPP::SHA1>::PrivateKey &privateKey);
 	void verifier(std::string &signature, std::string &message, const 	CryptoPP::ECDSA<CryptoPP::ECP, CryptoPP::SHA1>::PublicKey &publicKey);
-	std::vector<WalletData> getKeys();
 };
 
 

@@ -25,10 +25,13 @@ void Wallet::geneKey() {
 
 void Wallet::save()
 {
+	std::string fname;
+	unsigned __int16 cnt = 1;
 	for (WalletData data : GetInstance()->keyPairsAndBalance) {
-		CryptoPP::FileSink fs("private.ec.der", true);
-
+		fname = "private"+ std::to_string(cnt).append("private.ec.der");
+		CryptoPP::FileSink fs(fname.c_str(), true);
 		this->GetInstance()->keyPairsAndBalance.front().privKey.Save(fs);
+		cnt++;
 	}
 }
 
@@ -56,18 +59,14 @@ void Wallet::verifier(std::string &signature, std::string &message, const Crypto
 	if (!result)printf("Failed verify signature");
 }
 
-std::vector<WalletData> Wallet::getKeys() {
-	std::vector<WalletData> keys = this->GetInstance()->keyPairsAndBalance;
 
-	return keys;
-}
 
 int main(void) {
 
 	Wallet * wallet = Wallet::GetInstance();
 	wallet->geneKey();
-
-	std::vector<WalletData> keys = wallet->GetInstance()->getKeys();
+	wallet->geneKey();
+	wallet->geneKey();
 
 	wallet->save();
 
