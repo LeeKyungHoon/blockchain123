@@ -1,6 +1,8 @@
 
 #include"wallet.h"
 
+using namespace CryptoPP;
+
 //Wallet::Wallet() {
 //	if (keyPairsAndBalance.size() == 0)geneKey();
 //}
@@ -65,10 +67,27 @@ int main(void) {
 
 	Wallet * wallet = Wallet::GetInstance();
 	wallet->geneKey();
-	wallet->geneKey();
-	wallet->geneKey();
 
-	wallet->save();
+	std::string sign;
+	std::string message = "hello world";
+
+	wallet->signer(sign, message, wallet->keyPairsAndBalance.front());
+
+	//
+	for (auto a = sign.begin(); a != sign.end(); ++a) {
+		printf("%hhx", *a);
+	}
+	std::cout << std::endl;
+	//
+	//
+	for (auto a = sign.begin(); a != sign.end(); ++a) {
+		printf("%x", (*a)&0xff);
+		std::cout << std::endl;
+	}
+	//
+	message.append("!");
+
+	wallet->verifier(sign, message, wallet->keyPairsAndBalance.front().pubKey);
 
 	system("pause");
 	return 0;

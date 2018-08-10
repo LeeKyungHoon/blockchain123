@@ -28,6 +28,9 @@
     <Filter Include="wallet">
       <UniqueIdentifier>{dd42a05c-b827-423b-a38b-3bd35b1c13c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="chain">
+      <UniqueIdentifier>{c9c07a1a-4d01-4a02-95ef-7ddd9a0a22d4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -546,18 +549,15 @@
     <ClInclude Include="Blockheader.h">
       <Filter>block</Filter>
     </ClInclude>
-    <ClInclude Include="blockchain.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="wallet.h">
       <Filter>wallet</Filter>
+    </ClInclude>
+    <ClInclude Include="blockchain.h">
+      <Filter>chain</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="blockchain.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="transactionBase.cpp">
@@ -1075,6 +1075,9 @@
     </ClCompile>
     <ClCompile Include="wallet.cpp">
       <Filter>wallet</Filter>
+    </ClCompile>
+    <ClCompile Include="blockchain.cpp">
+      <Filter>chain</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

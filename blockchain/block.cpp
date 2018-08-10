@@ -14,6 +14,8 @@ unsigned char * Block::getBlockHash() { return Block::blockHash; }
 
 void Block::makeTransaction(const char * toAddr, const char * value, const char * nonce, const char * contents) { List->add(new TransactionBase(toAddr, value, nonce, contents)); }
 
+void Block::makeTransaction(const TransactionBase* tx) { List->add(new TransactionBase(*tx)); }
+
 void Block::mineBlock()
 {
 	Block::header->setBlockHeader(Block::header->hs.hashPrevBlock, Block::List);

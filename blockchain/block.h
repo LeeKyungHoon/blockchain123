@@ -16,6 +16,7 @@ public: //function
 	TransactionList getList();
 	unsigned char* getBlockHash();
 	void makeTransaction(const char* toAddr, const char* value, const char* nonce, const char* contents);
+	void makeTransaction(const TransactionBase*);
 	void mineBlock();
 	~Block();
 };

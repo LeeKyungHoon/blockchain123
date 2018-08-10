@@ -5,6 +5,7 @@
 #include"cryptopp700/oids.h"
 #include"cryptopp700/filters.h"
 #include"cryptopp700/files.h"
+#include"transactionBase.h"
 
 struct WalletData
 {
@@ -29,6 +30,8 @@ public:
 	void signer(std::string &signature, std::string &message, const WalletData &wd);
 	void signer(std::string &signature, std::string &message, const CryptoPP::ECDSA<CryptoPP::ECP, CryptoPP::SHA1>::PrivateKey &privateKey);
 	void verifier(std::string &signature, std::string &message, const 	CryptoPP::ECDSA<CryptoPP::ECP, CryptoPP::SHA1>::PublicKey &publicKey);
+	void makeRawTransaction();
+
 };
 
 
