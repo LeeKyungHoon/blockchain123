@@ -15,7 +15,7 @@ public: //function
 	Blockheader getHeader();
 	TransactionList getList();
 	unsigned char* getBlockHash();
-	void makeTransaction(const char* toAddr, const char* value, const char* nonce, const char* contents);
+	void makeTransaction(const char* toAddr, const char* value, const char* fee, const char* sMsg);
 	void makeTransaction(const TransactionBase*);
 	void mineBlock();
 	~Block();

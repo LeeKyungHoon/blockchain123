@@ -40,6 +40,7 @@ void TransactionUtility::TxUtil::getTime(unsigned char* &src) {
 	TransactionUtility::TxUtil::add(src, sec);
 	TransactionUtility::TxUtil::add(src, milsec);
 
+
 	delete[]milsec;
 	delete[]sec;
 	delete[]min;
@@ -49,15 +50,15 @@ void TransactionUtility::TxUtil::getTime(unsigned char* &src) {
 	delete[]year;
 }
 
-void TransactionUtility::TxUtil::calculateHash(unsigned char* &hash, unsigned char * addr, unsigned char * val, unsigned char * nonce, unsigned char * cont, unsigned char * time)
+void TransactionUtility::TxUtil::calculateHash(unsigned char* &hash, unsigned char * addr, unsigned char * val, unsigned char * fee, unsigned char * sMsg, unsigned char * time)
 {
 	std::string digest;
 	CryptoPP::SHA256 sha256;
 
 	TransactionUtility::TxUtil::add(hash, addr);
 	TransactionUtility::TxUtil::add(hash, val);
-	TransactionUtility::TxUtil::add(hash, nonce);
-	TransactionUtility::TxUtil::add(hash, cont);
+	TransactionUtility::TxUtil::add(hash, fee);
+	TransactionUtility::TxUtil::add(hash, sMsg);
 	TransactionUtility::TxUtil::add(hash, time);
 
 	CryptoPP::StringSource *s = new CryptoPP::StringSource((const char*)hash, true, new CryptoPP::HashFilter(sha256, new CryptoPP::HexEncoder(new CryptoPP::StringSink(digest))));

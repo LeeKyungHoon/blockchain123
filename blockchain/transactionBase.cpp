@@ -3,9 +3,7 @@
 #include"transactionBase.h"
 
 TransactionBase::TransactionBase() {
-
 	setNull();
-
 }
 
 TransactionBase::TransactionBase(const TransactionBase& txBase) {
@@ -14,41 +12,40 @@ TransactionBase::TransactionBase(const TransactionBase& txBase) {
 	txHash = txBase.txHash;
 	txToAddr = txBase.txToAddr;
 	txVal = txBase.txVal;
-	txNonce = txBase.txNonce;
-	txCont = txBase.txCont;
+	txFee = txBase.txFee;
+	txSignedMsg = txBase.txSignedMsg;
 	txTime = txBase.txTime;
 
 }
 
-TransactionBase::TransactionBase(const char* toAddr, const char* val, const char* nonce, const char* cont)
+TransactionBase::TransactionBase(const char* toAddr, const char* val, const char* fee, const char* sMsg)
 {
 	TransactionUtility::TxUtil util;
 	setNull();
 	txToAddr = (unsigned char*)toAddr;
 	txVal = (unsigned char*)val;
-	txNonce = (unsigned char*)nonce;
-	txCont = (unsigned char*)cont;
+	txFee = (unsigned char*)fee;
+	txSignedMsg = (unsigned char*)sMsg;
 	util.getTime(txTime);
-	util.calculateHash(this->txHash,this->txToAddr, this->txVal, this->txNonce, this->txCont, this->txTime);
+	util.calculateHash(this->txHash, this->txToAddr, this->txVal, this->txFee, this->txSignedMsg, this->txTime);
 }
 
 void TransactionBase::setTransactionBase(const TransactionBase& txBase) {
 	TransactionBase::TransactionBase(txBase);
 }
 
-TransactionBase TransactionBase::getTransactionBase() {
-
-	return *this;
-
-}
+TransactionBase TransactionBase::getTransactionBase() { return *this; }
 
 void TransactionBase::setNull() {
 
 	txHash = nullptr;
 	txToAddr = nullptr;
 	txVal = nullptr;
-	txNonce = nullptr;
-	txCont = nullptr;
+	txFee = nullptr;
+	txSignedMsg = nullptr;
 	txTime = nullptr;
 }
 
+void TransactionBase::txSigned() {
+	this->txSign = !this->txSign;
+}

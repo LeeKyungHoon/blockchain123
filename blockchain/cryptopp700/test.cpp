@@ -39,7 +39,7 @@
 
 #ifdef CRYPTOPP_WIN32_AVAILABLE
 #define WIN32_LEAN_AND_MEAN
-#include <windows.h>
+#include <Windows.h>
 #endif
 
 #if defined(USE_BERKELEY_STYLE_SOCKETS) && !defined(macintosh)
