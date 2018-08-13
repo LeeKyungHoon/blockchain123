@@ -491,7 +491,6 @@
     <ClCompile Include="cryptopp700\zdeflate.cpp" />
     <ClCompile Include="cryptopp700\zinflate.cpp" />
     <ClCompile Include="cryptopp700\zlib.cpp" />
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="merkleTree.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -511,6 +510,11 @@
     <None Include="cryptopp700\rdrand.asm" />
     <None Include="cryptopp700\x64dll.asm" />
     <None Include="cryptopp700\x64masm.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\wallet\wallet.csproj">
+      <Project>{9a905850-4675-49ab-8fac-03faa7a1bf71}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -111,3 +111,28 @@ void Wallet::publickeyHexEncoding(std::string & str, const CryptoPP::ECDSA<Crypt
 	ss << std::hex << pkx << pky;
 	str = ss.str();
 }
+
+void __wallet_main(void) {
+
+	std::string str;
+
+	Wallet * wallet = Wallet::GetInstance();
+
+	while (true) {
+		scanf_s("%s", str);
+
+		if (str.compare("exit")) {
+			break;
+		}
+
+	}
+
+}
+
+int main(void) {
+
+	__wallet_main();
+
+	system("pause");
+	return 0;
+}
