@@ -1,4 +1,6 @@
 
+#pragma once
+
 #include"transactionBase.h"
 #include<unordered_map>
 
@@ -10,4 +12,7 @@ public:
 	TransactionList();
 	TransactionList(const transactionMap&);
 	void add(const TransactionBase*);
+	void getLastElem(TransactionBase& tx);
+	TransactionBase* getLastElem();
+	void getFristElem(const TransactionBase&);
 };

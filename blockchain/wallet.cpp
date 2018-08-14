@@ -28,7 +28,7 @@ void Wallet::save()
 	std::string fname;
 	unsigned __int16 cnt = 1;
 	for (WalletData data : GetInstance()->keyPairsAndBalance) {
-		fname = "private" + std::to_string(cnt).append("private.ec.der");
+		fname = "private" + std::to_string(cnt).append(".ec.der");
 		CryptoPP::FileSink fs(fname.c_str(), true);
 		this->GetInstance()->keyPairsAndBalance.front().privKey.Save(fs);
 		cnt++;
@@ -37,6 +37,15 @@ void Wallet::save()
 
 void Wallet::load()
 {
+	CryptoPP::FileSource fs("*.ec.der", true);
+	WalletData wd;
+	CryptoPP::ECDSA<CryptoPP::ECP, CryptoPP::SHA1>::PrivateKey privKey;
+	CryptoPP::ECDSA<CryptoPP::ECP, CryptoPP::SHA1>::PublicKey pubKey;
+	privKey.Load(fs);
+	wd.privKey = privKey;
+	privKey.MakePublicKey(pubKey);
+	wd.pubKey = pubKey;
+	this->GetInstance()->keyPairsAndBalance.push_back(wd);
 }
 
 void Wallet::signer(std::string & signature, std::string & message, const std::vector<WalletData>& keysBalance)
@@ -86,7 +95,13 @@ void Wallet::signTransaction(TransactionBase & tx, const CryptoPP::ECDSA<CryptoP
 	util.add(msg, tx.txTime);
 	message.assign((const char*)msg);
 	Wallet::signer(signature, message, privKey);
-	tx = TransactionBase((const char*)tx.txToAddr, (const char*)tx.txVal, (const char*)tx.txFee, signature.c_str());
+	char* ss = new char[42]{ 0 };
+	int i = 0;
+	for (char c : signature) {
+		ss[i] = c;
+		i++;
+	}
+	tx = TransactionBase((const char*)tx.txToAddr, (const char*)tx.txVal, (const char*)tx.txFee, ss);
 	tx.txSigned();
 
 	//delete tempTx;
@@ -112,27 +127,10 @@ void Wallet::publickeyHexEncoding(std::string & str, const CryptoPP::ECDSA<Crypt
 	str = ss.str();
 }
 
-void __wallet_main(void) {
-
-	std::string str;
-
-	Wallet * wallet = Wallet::GetInstance();
-
-	while (true) {
-		scanf_s("%s", str);
-
-		if (str.compare("exit")) {
-			break;
-		}
-
-	}
-
-}
-
-int main(void) {
-
-	__wallet_main();
-
-	system("pause");
-	return 0;
-}
+//int main(void) {
+//
+//	__wallet_main();
+//
+//	system("pause");
+//	return 0;
+//}
