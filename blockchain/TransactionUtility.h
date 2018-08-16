@@ -1,10 +1,14 @@
+//#pragma comment(lib, "../../../cryptopp700/Win32/Output/Release/cryptlib.lib")
 #pragma once
 #include<iostream>
 #include<Windows.h>
 #include<cstring>
-#include"cryptopp700/sha.h"
-#include"cryptopp700/filters.h"
-#include"cryptopp700/hex.h"
+//#include<sha.h>
+//#include<filters.h>
+//#include<hex.h>
+#include"sha.h"
+#include"filters.h"
+#include"hex.h"
 
 using namespace CryptoPP;
 

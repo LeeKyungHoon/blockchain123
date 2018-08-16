@@ -1,13 +1,19 @@
 
-
-#include"cryptopp700/eccrypto.h"
-#include"cryptopp700/osrng.h"
-#include"cryptopp700/oids.h"
-#include"cryptopp700/filters.h"
-#include"cryptopp700/files.h"
+//#pragma comment(lib, "../../../cryptopp700/Win32/Output/Release/cryptlib.lib")
+#include"eccrypto.h"
+#include"osrng.h"
+#include"oids.h"
+#include"filters.h"
+#include"files.h"
 #include"transactionList.h"
-#include<sstream>
-
+#include"sstream"
+//#include<eccrypto.h>
+//#include<osrng.h>
+//#include<oids.h>
+//#include<filters.h>
+//#include<files.h>
+//#include"transactionList.h"
+//#include<sstream>
 struct WalletData
 {
 	CryptoPP::ECDSA<CryptoPP::ECP, CryptoPP::SHA1>::PrivateKey privKey;
