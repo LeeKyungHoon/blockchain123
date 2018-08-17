@@ -7,8 +7,6 @@
 
 void TransactionUtility::TxUtil::getTime(unsigned char* &src) {
 
-	//unsigned char* time = new unsigned char[18]{ 0 };
-
 	SYSTEMTIME utc;
 	SYSTEMTIME cur_time;
 	TIME_ZONE_INFORMATION tzi;
@@ -16,44 +14,29 @@ void TransactionUtility::TxUtil::getTime(unsigned char* &src) {
 	GetTimeZoneInformation(&tzi);
 	SystemTimeToTzSpecificLocalTime(&tzi, &utc, &cur_time);
 
-	unsigned char* year = new unsigned char[4]{ 0 };
-	unsigned char* month = new unsigned char[2]{ 0 };
-	unsigned char* day = new unsigned char[2]{ 0 };
-	unsigned char* hour = new unsigned char[2]{ 0 };
-	unsigned char* min = new unsigned char[2]{ 0 };
-	unsigned char* sec = new unsigned char[2]{ 0 };
-	unsigned char* milsec = new unsigned char[4]{ 0 };
+	std::string year = std::to_string(cur_time.wYear);
+	std::string month = std::to_string(cur_time.wMonth);
+	std::string day = std::to_string(cur_time.wDay);
+	std::string hour = std::to_string(cur_time.wHour);
+	std::string min = std::to_string(cur_time.wMinute);
+	std::string sec = std::to_string(cur_time.wSecond);
+	std::string milsec = std::to_string(cur_time.wMilliseconds);
 
-	_itoa_s((__int16)cur_time.wYear, (char*)year, _msize(year) + 1, 10);
-	_itoa_s((__int16)cur_time.wMonth, (char*)month, _msize(month) + 1, 10);
-	_itoa_s((__int16)cur_time.wDay, (char*)day, _msize(day) + 1, 10);
-	_itoa_s((__int16)cur_time.wHour, (char*)hour, _msize(hour) + 1, 10);
-	_itoa_s((__int16)cur_time.wMinute, (char*)min, _msize(min) + 1, 10);
-	_itoa_s((__int16)cur_time.wSecond, (char*)sec, _msize(sec) + 1, 10);
-	_itoa_s((__int16)cur_time.wMilliseconds, (char*)milsec, _msize(milsec) + 1, 10);
+	std::string str;
 
-	TransactionUtility::TxUtil::add(src, year);
-	TransactionUtility::TxUtil::add(src, month);
-	TransactionUtility::TxUtil::add(src, day);
-	TransactionUtility::TxUtil::add(src, hour);
-	TransactionUtility::TxUtil::add(src, min);
-	TransactionUtility::TxUtil::add(src, sec);
-	TransactionUtility::TxUtil::add(src, milsec);
+	str.append(year).append(month).append(day).append(hour).append(min).append(sec).append(milsec);
 
+	TransactionUtility::TxUtil::replace(src, (unsigned char*)str.c_str());
 
-	delete[]milsec;
-	delete[]sec;
-	delete[]min;
-	delete[]hour;
-	delete[]day;
-	delete[]month;
-	delete[]year;
 }
 
 void TransactionUtility::TxUtil::calculateHash(unsigned char* &hash, unsigned char * addr, unsigned char * val, unsigned char * fee, unsigned char * sMsg, unsigned char * time)
 {
 	std::string digest;
 	CryptoPP::SHA256 sha256;
+
+	//std::string temp;
+	//temp.append((const char*)addr).append((const char*)val).append((const char*)fee).append((const char*)sMsg).append((const char*)time);
 
 	TransactionUtility::TxUtil::add(hash, addr);
 	TransactionUtility::TxUtil::add(hash, val);
@@ -72,6 +55,10 @@ void TransactionUtility::TxUtil::calculateHash(unsigned char *& blockHash, unsig
 {
 	std::string digest;
 	CryptoPP::SHA256 sha256;
+	//std::string temp((char*) blockHash);
+
+	//temp.append((const char*)hashPrevBlock).append((const char*)merkleRoot).append((const char*)time).append((const char*)difficulty).append((const char*)nonce);
+
 
 	TransactionUtility::TxUtil::add(blockHash, hashPrevBlock);
 	TransactionUtility::TxUtil::add(blockHash, merkleRoot);
@@ -91,7 +78,7 @@ void TransactionUtility::TxUtil::calculateHash(unsigned char* & src) {
 	std::string digest;
 
 	CryptoPP::StringSource *s = new CryptoPP::StringSource((const char*)src, true, new CryptoPP::HashFilter(sha256, new CryptoPP::HexEncoder(new CryptoPP::StringSink(digest))));
-	
+
 	TransactionUtility::TxUtil::replace(src, (unsigned char*)digest.c_str());
 
 	delete[] s;
@@ -165,11 +152,10 @@ void TransactionUtility::TxUtil::add(unsigned char* &dest, unsigned char* src) {
 
 void TransactionUtility::TxUtil::add(unsigned char *& dest, unsigned int src)
 {
-
 	int i = 0;
 	int dest_cnt = 0;
 	int src_cnt = (src / 10) + 1;
-	unsigned char * strSrc = new unsigned char[src_cnt] { 0 };
+	unsigned char * strSrc = new unsigned char[_msize(dest)+1] {0};
 
 	if (dest != nullptr) {
 		unsigned char* temp = dest;
@@ -197,8 +183,10 @@ void TransactionUtility::TxUtil::add(unsigned char *& dest, unsigned int src)
 			}
 		}
 		delete[] temp;
+
 	}
 	else if (dest == nullptr) {
+
 		_itoa_s(src, (char*)strSrc, _msize(strSrc) + 1, 10);
 		dest = new unsigned char[src_cnt + 1]{ 0 };
 		i = 0;
@@ -211,8 +199,8 @@ void TransactionUtility::TxUtil::add(unsigned char *& dest, unsigned int src)
 		}
 
 	}
+	strSrc = { 0 };
 	delete[] strSrc;
-
 }
 
 void TransactionUtility::TxUtil::replace(unsigned char *& dest, unsigned char *src)

@@ -1,6 +1,8 @@
 
 #include"Blockheader.h"
 
+extern bool running_flag;
+
 class Block {
 
 public: // arg
@@ -8,6 +10,9 @@ public: // arg
 	TransactionList *List;
 	unsigned char* blockHash;
 	//Block * tail;
+
+	
+
 
 public: //function
 	Block();

@@ -6,21 +6,27 @@
 //}
 
 void Wallet::geneKey() {
-	WalletData wd;
-	CryptoPP::AutoSeededRandomPool prng;
-	CryptoPP::ECDSA<CryptoPP::ECP, CryptoPP::SHA1>::PrivateKey privKey;
-	privKey.Initialize(prng, CryptoPP::ASN1::secp160r1());
-	CryptoPP::ECDSA<CryptoPP::ECP, CryptoPP::SHA1>::PublicKey pubKey;
-	privKey.MakePublicKey(pubKey);
+	if (Wallet::GetInstance()->keyPairsAndBalance.size() != 0) {
+		printf("you have already key pair\nyou make only one key pair in your wallet\n");
+	}
+	else {
+		WalletData wd;
+		CryptoPP::AutoSeededRandomPool prng;
+		CryptoPP::ECDSA<CryptoPP::ECP, CryptoPP::SHA1>::PrivateKey privKey;
+		privKey.Initialize(prng, CryptoPP::ASN1::secp160r1());
+		CryptoPP::ECDSA<CryptoPP::ECP, CryptoPP::SHA1>::PublicKey pubKey;
+		privKey.MakePublicKey(pubKey);
 
-	bool rPrivKey = privKey.Validate(prng, 3);
-	bool rPubKey = pubKey.Validate(prng, 3);
-	if (!rPrivKey || !rPubKey)printf("Failed generate Key, Please re-generate Key");
-	else { wd.privKey = privKey; wd.pubKey = pubKey; }
+		bool rPrivKey = privKey.Validate(prng, 3);
+		bool rPubKey = pubKey.Validate(prng, 3);
+		if (!rPrivKey || !rPubKey)printf("Failed generate Key, Please re-generate Key");
+		else { wd.privKey = privKey; wd.pubKey = pubKey; }
 
-	wd.balance = 100.0;
+		wd.balance = 100.0;
 
-	GetInstance()->keyPairsAndBalance.push_back(wd);
+		GetInstance()->keyPairsAndBalance.push_back(wd);
+		printf("generated new Key\n");
+	}
 }
 
 void Wallet::save()

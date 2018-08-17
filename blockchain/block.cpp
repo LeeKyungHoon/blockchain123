@@ -1,6 +1,7 @@
 
 #include"block.h"
 
+bool running_flag = true;
 
 Block::Block() { header = new Blockheader(); List = new TransactionList(); blockHash = nullptr;/* tail = nullptr;*/ }
 
@@ -23,12 +24,16 @@ void Block::mineBlock()
 	unsigned char* diff = new unsigned char[Block::header->hs.Difficulty];
 	int tempNonce = 0;
 	for (unsigned int i = 0; i < Block::header->hs.Difficulty + 1; i++) { if (i == Block::header->hs.Difficulty) { diff[i] = '\0'; } else { diff[i] = '0'; } }
-	while (true) {
+	while (running_flag) {
 		util.calculateHash(Block::blockHash, Block::header->hs.hashPrevBlock, Block::header->hs.hashMerkleRoot, Block::header->hs.Time, Block::header->hs.Difficulty, Block::header->hs.Nonce);
 		if (std::memcmp(Block::blockHash, diff, Block::header->hs.Difficulty) == 0) { break; }
 		else { Block::header->hs.Nonce = ++tempNonce; }
 	}
+	diff = { 0 };
 	delete[] diff;
+
+	std::cout << "success mined block" << std::endl;
+	std::cout << "mined block hash is " << Block::getBlockHash() << std::endl;
 }
 
 Block::~Block() { delete header; delete List; }
