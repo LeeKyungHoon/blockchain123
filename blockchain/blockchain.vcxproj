@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Administrator\source\cryptopp700;C:\Users\User\source\cryptopp700;C:\Users\User\source\cryptopp700\Win32\cryptlib\Release\cryptlib.tlog;C:\Users\User\source\cryptopp700\Win32\cryptlib\Release;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\source\cryptopp700;C:\Users\Administrator\source\cryptopp700;C:\Users\User\source\cryptopp700;C:\Users\User\source\cryptopp700\Win32\cryptlib\Release\cryptlib.tlog;C:\Users\User\source\cryptopp700\Win32\cryptlib\Release;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -135,8 +135,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Administrator\source\cryptopp700\Win32\Output\Release;C:\Users\User\source\cryptopp700\Win32\Output\Debug;C:\Users\User\source\cryptopp700\Win32\Output\Release;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>cryptlib.lib;cryptopp.lib;cryptopp.lib;cryptlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\User\source\cryptopp700\Win32\Output\Release;C:\Users\Administrator\source\cryptopp700\Win32\Output\Release;C:\Users\User\source\cryptopp700\Win32\Output\Debug;C:\Users\User\source\cryptopp700\Win32\Output\Release;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cryptlib.lib;cryptlib.lib;cryptopp.lib;cryptopp.lib;cryptlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -149,15 +149,16 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\User\source\cryptopp700;C:\Users\User\source\cryptopp700\Win32\cryptlib\Release\cryptlib.tlog;C:\Users\User\source\cryptopp700\Win32\cryptlib\Release;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\source\cryptopp700;C:\Users\User\source\cryptopp700;C:\Users\User\source\cryptopp700\Win32\cryptlib\Release\cryptlib.tlog;C:\Users\User\source\cryptopp700\Win32\cryptlib\Release;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\User\source\cryptopp700\Win32\Output\Debug;C:\Users\User\source\cryptopp700\Win32\Output\Release;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>cryptopp.lib;cryptlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\User\source\cryptopp700\Win32\Output\Release;C:\Users\User\source\cryptopp700\Win32\Output\Debug;C:\Users\User\source\cryptopp700\Win32\Output\Release;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>cryptlib.lib;cryptopp.lib;cryptlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
