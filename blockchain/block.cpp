@@ -3,7 +3,7 @@
 
 bool running_flag = true;
 
-Block::Block() { header = new Blockheader(); List = new TransactionList(); blockHash = nullptr;/* tail = nullptr;*/ }
+Block::Block() { header = new Blockheader(); List = new TransactionList(); blockHash = new unsigned char[128]{ 0 };/* tail = nullptr;*/ }
 
 Block::Block(const Block& block) { Block::header = new Blockheader(); Block::List = new TransactionList(); Block::blockHash = nullptr; /*tail = nullptr;*/ Block::header->hs.hashPrevBlock = block.blockHash; }
 
@@ -21,7 +21,7 @@ void Block::mineBlock()
 {
 	Block::header->setBlockHeader(Block::header->hs.hashPrevBlock, Block::List);
 	TransactionUtility::TxUtil util;
-	unsigned char* diff = new unsigned char[Block::header->hs.Difficulty];
+	unsigned char* diff = new unsigned char[Block::header->hs.Difficulty]{ 0 };
 	int tempNonce = 0;
 	for (unsigned int i = 0; i < Block::header->hs.Difficulty + 1; i++) { if (i == Block::header->hs.Difficulty) { diff[i] = '\0'; } else { diff[i] = '0'; } }
 	while (running_flag) {

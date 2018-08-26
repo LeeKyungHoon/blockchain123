@@ -1,14 +1,12 @@
-//#pragma comment(lib, "../../../cryptopp700/Win32/Output/Release/cryptlib.lib")
-#pragma once
 #include<iostream>
 #include<Windows.h>
 #include<cstring>
-//#include<sha.h>
-//#include<filters.h>
-//#include<hex.h>
 #include"sha.h"
 #include"filters.h"
 #include"hex.h"
+#include"base64.h"
+#include<sstream>
+#include<string>
 
 using namespace CryptoPP;
 
@@ -21,8 +19,6 @@ namespace TransactionUtility {
 		void calculateHash(unsigned char * &, unsigned char*, unsigned char*, unsigned char*, unsigned int, unsigned int);
 		void calculateHash(unsigned char * &);
 		void add(unsigned char* &, unsigned char*);
-		void add(unsigned char* &, unsigned int);
-		void replace(unsigned char* &, unsigned char*);
+		int charCount(unsigned char* str);
 	};
-
 }

@@ -1,6 +1,7 @@
 
 #include"merkleTree.h"
 
+
 typedef struct headerStruct
 {
 	unsigned char* hashPrevBlock;
