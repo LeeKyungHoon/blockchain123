@@ -90,13 +90,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Administrator\source\cryptopp700;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Debug;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Release;C:\Users\User\source\cryptopp700;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\cryptopp700;C:\Users\Administrator\source\cryptopp700;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Debug;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Release;C:\Users\User\source\cryptopp700;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Administrator\source\cryptopp700\Win32\Output\Release;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Debug;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\cryptopp700\Win32\Output\Release;C:\Users\Administrator\source\cryptopp700\Win32\Output\Release;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Debug;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>cryptlib.lib;cryptopp.lib;dlltest.lib;cryptlib.lib;cryptopp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\User\source\cryptopp700;C:\Users\Administrator\source\cryptopp700;C:\Users\User\source\cryptopp700;C:\Users\User\source\cryptopp700\Win32\cryptlib\Release\cryptlib.tlog;C:\Users\User\source\cryptopp700\Win32\cryptlib\Release;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\User\source\cryptopp700;C:\cryptopp700;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -135,7 +135,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\User\source\cryptopp700\Win32\Output\Release;C:\Users\Administrator\source\cryptopp700\Win32\Output\Release;C:\Users\User\source\cryptopp700\Win32\Output\Debug;C:\Users\User\source\cryptopp700\Win32\Output\Release;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\cryptopp700\Win32\Output\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>cryptlib.lib;cryptlib.lib;cryptopp.lib;cryptopp.lib;cryptlib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -178,7 +178,10 @@
     <ClCompile Include="block.cpp" />
     <ClCompile Include="blockchain.cpp" />
     <ClCompile Include="blockheader.cpp" />
+    <ClCompile Include="client.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="merkleTree.cpp" />
+    <ClCompile Include="server.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -189,11 +192,6 @@
     <ClCompile Include="transactionList.cpp" />
     <ClCompile Include="TransactionUtility.cpp" />
     <ClCompile Include="wallet.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\wallet\wallet.csproj">
-      <Project>{9a905850-4675-49ab-8fac-03faa7a1bf71}</Project>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

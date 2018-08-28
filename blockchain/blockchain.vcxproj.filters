@@ -28,6 +28,9 @@
     <Filter Include="chain">
       <UniqueIdentifier>{c9c07a1a-4d01-4a02-95ef-7ddd9a0a22d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="network">
+      <UniqueIdentifier>{2f02637e-4b35-46ac-b622-17331383fe5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -91,6 +94,15 @@
     </ClCompile>
     <ClCompile Include="blockchain.cpp">
       <Filter>chain</Filter>
+    </ClCompile>
+    <ClCompile Include="server.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="client.cpp">
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

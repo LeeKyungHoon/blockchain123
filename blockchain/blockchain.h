@@ -1,6 +1,5 @@
 
 #include"block.h"
-#include<thread>
 
 class Blockchain {
 private:
