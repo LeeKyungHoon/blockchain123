@@ -15,18 +15,31 @@
 int server(void) {
 
 	WSADATA ws;
-	WORD port_number;
+	WORD port_number = PORT;
 	int addr1, addr2, addr3, addr4;
 	int client_length;
 	int bytes_reveived;
-	SOCKET socket;
+	SOCKET s = socket(AF_INET, SOCK_DGRAM, 0);
 	struct sockaddr_in server;
 	struct sockaddr_in client;
 	char buffer[BUFFER_SIZE];
 	struct hostent *hostpointer;
 	char host_name[256];
 
+	memset((void*)&server, '\0', sizeof(struct sockaddr_in));
 
+	server.sin_family = AF_INET;
+	server.sin_port = htons(port_number);
+	gethostname(host_name, sizeof(host_name));
+	hostpointer = gethostbyname(host_name);
+
+	if (hostpointer == nullptr) {
+		closesocket(s);
+		WSACleanup();
+		exit(0);
+	}
+
+	server
 
 }
 

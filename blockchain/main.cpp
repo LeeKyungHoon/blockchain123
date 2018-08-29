@@ -6,6 +6,14 @@
 #include<thread>
 
 
+
+
+#include <windows.h>
+#include <wininet.h>
+#include<string>
+#include<iostream>
+
+
 void __mining(void) {
 	while (running_flag) {
 		Blockchain::GetInstance()->makeNewBlock();
@@ -123,17 +131,20 @@ void __wallet_main(Wallet* wallet, Blockchain* blockchain) {
 	}
 
 }
+
 int main(void) {
-	Wallet * wallet = Wallet::GetInstance();
-	Blockchain * blockchain = Blockchain::GetInstance();
+	//Wallet * wallet = Wallet::GetInstance();
+	//Blockchain * blockchain = Blockchain::GetInstance();
 
-	std::thread*p1Thread = new std::thread(__wallet_main, wallet, blockchain);
-	std::thread*p2Thread = new std::thread(__mining);
+	//std::thread*p1Thread = new std::thread(__wallet_main, wallet, blockchain);
+	//std::thread*p2Thread = new std::thread(__mining);
 
-	p1Thread->join();
-	p2Thread->join();
+	//p1Thread->join();
+	//p2Thread->join();
 	//__wallet_main(wallet, blockchain);
 	//__blockchain_main(blockchain);
+
+
 
 	system("pause");
 	return 0;
