@@ -1,16 +1,11 @@
 
-
-
-
-
-
-
 #include<WinSock2.h>
 #include<WS2tcpip.h>
 
 #define PORT 55679
 #define BUFFER_SIZE 4096
 
+#pragma comment(lib, "Ws2_32.lib")
 
 int server(void) {
 
@@ -31,7 +26,7 @@ int server(void) {
 	server.sin_family = AF_INET;
 	server.sin_port = htons(port_number);
 	gethostname(host_name, sizeof(host_name));
-	hostpointer = gethostbyname(host_name);
+	//hostpointer = getaddrinfo(host_name);
 
 	if (hostpointer == nullptr) {
 		closesocket(s);
