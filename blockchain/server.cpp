@@ -39,7 +39,24 @@ int server(void) {
 		exit(0);
 	}
 
-	server
+	server.sin_addr.S_un.S_un_b.s_b1 = hostpointer->h_addr_list[0][0];
+	server.sin_addr.S_un.S_un_b.s_b2 = hostpointer->h_addr_list[0][1];
+	server.sin_addr.S_un.S_un_b.s_b2 = hostpointer->h_addr_list[0][2];
+	server.sin_addr.S_un.S_un_b.s_b2 = hostpointer->h_addr_list[0][3];
+
+	bind(s, (struct sockaddr*)&server, sizeof(struct sockaddr_in));
+
+	while (true) {
+		client_length = (int)sizeof(struct sockaddr_in);
+
+		bytes_reveived = recvfrom(s, buffer, BUFFER_SIZE, 0, (struct sockaddr*)&client, &client_length);
+	
+		//sendto(s, )
+		
+	
+	
+	}
+
 
 }
 
