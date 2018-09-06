@@ -14,4 +14,5 @@ public:
 	void occurTransaction(std::string, std::string, std::string, std::string);
 	void occurTransaction(const TransactionBase * tx);
 	std::vector<Block*> getChain();
+	void rcv_block(Block block);
 };

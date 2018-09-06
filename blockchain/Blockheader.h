@@ -17,7 +17,6 @@ public:
 	header hs;
 	merkle::merkleTree merkleT;
 	TransactionUtility::TxUtil util;
-
 public: //function
 	Blockheader();
 	Blockheader(const Blockheader&);

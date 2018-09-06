@@ -29,7 +29,10 @@
       <UniqueIdentifier>{c9c07a1a-4d01-4a02-95ef-7ddd9a0a22d4}</UniqueIdentifier>
     </Filter>
     <Filter Include="network">
-      <UniqueIdentifier>{2f02637e-4b35-46ac-b622-17331383fe5f}</UniqueIdentifier>
+      <UniqueIdentifier>{7ad66cfb-9fa8-4703-b9d9-0c6c8cae375d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="serialization">
+      <UniqueIdentifier>{cb81546b-da07-47ed-bd08-5cc93557b0cf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -54,9 +57,6 @@
     <ClInclude Include="block.h">
       <Filter>block</Filter>
     </ClInclude>
-    <ClInclude Include="Node.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Blockheader.h">
       <Filter>block</Filter>
     </ClInclude>
@@ -65,6 +65,15 @@
     </ClInclude>
     <ClInclude Include="blockchain.h">
       <Filter>chain</Filter>
+    </ClInclude>
+    <ClInclude Include="client.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="serialization.h">
+      <Filter>serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="node.h">
+      <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -95,14 +104,14 @@
     <ClCompile Include="blockchain.cpp">
       <Filter>chain</Filter>
     </ClCompile>
-    <ClCompile Include="server.cpp">
-      <Filter>network</Filter>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="client.cpp">
       <Filter>network</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="node.cpp">
+      <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
