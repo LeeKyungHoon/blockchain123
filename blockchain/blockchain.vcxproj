@@ -179,18 +179,15 @@
   <ItemGroup>
     <ClCompile Include="block.cpp" />
     <ClCompile Include="blockchain.cpp" />
-    <ClCompile Include="blockheader.cpp" />
     <ClCompile Include="client.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="merkleTree.cpp" />
-    <ClCompile Include="node.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="transactionBase.cpp" />
     <ClCompile Include="transactionList.cpp" />
     <ClCompile Include="TransactionUtility.cpp" />
     <ClCompile Include="wallet.cpp" />

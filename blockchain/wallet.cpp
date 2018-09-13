@@ -85,13 +85,12 @@ void Wallet::verifier(std::string &signature, std::string &message, const Crypto
 
 void Wallet::makeRawTransaction(const char* toAddr, const char* value, const char* fee)
 {
-	list->add(new TransactionBase(toAddr, value, fee, nullptr));
+	list->add(new TransactionBase(toAddr, value, fee, 0));
 }
 
 void Wallet::signTransaction(TransactionBase & tx, const CryptoPP::ECDSA<CryptoPP::ECP, CryptoPP::SHA1>::PrivateKey &privKey)
 {
 	TransactionUtility::TxUtil util;
-	//TransactionBase *tempTx = &tx;
 	std::string signature;
 	std::string message = "";
 	unsigned char* msg = nullptr;
@@ -107,7 +106,7 @@ void Wallet::signTransaction(TransactionBase & tx, const CryptoPP::ECDSA<CryptoP
 		ss[i] = c;
 		i++;
 	}
-	tx = TransactionBase((const char*)tx.txToAddr, (const char*)tx.txVal, (const char*)tx.txFee, ss);
+	tx = TransactionBase((const char*)tx.txToAddr, (const char*)tx.txVal, (const char*)tx.txFee, (const char*) ss);
 	tx.txSigned();
 
 	//delete tempTx;

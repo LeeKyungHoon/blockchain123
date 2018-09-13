@@ -80,9 +80,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="transactionBase.cpp">
-      <Filter>transaction</Filter>
-    </ClCompile>
     <ClCompile Include="TransactionUtility.cpp">
       <Filter>transaction</Filter>
     </ClCompile>
@@ -95,9 +92,6 @@
     <ClCompile Include="block.cpp">
       <Filter>block</Filter>
     </ClCompile>
-    <ClCompile Include="blockheader.cpp">
-      <Filter>block</Filter>
-    </ClCompile>
     <ClCompile Include="wallet.cpp">
       <Filter>wallet</Filter>
     </ClCompile>
@@ -108,9 +102,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="client.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
-    <ClCompile Include="node.cpp">
       <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>

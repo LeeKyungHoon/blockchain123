@@ -3,37 +3,56 @@
 
 bool running_flag = true;
 
-Block::Block() { header = new Blockheader(); List = new TransactionList(); blockHash = new unsigned char[128]{ 0 };/* tail = nullptr;*/ }
+Block::Block() { 
+	header = new Blockheader(); 
+	List = new TransactionList(); 
+	blockHash = new unsigned char[128]{ 0 }; 
+}
 
-Block::Block(const Block& block) { Block::header = new Blockheader(); Block::List = new TransactionList(); Block::blockHash = nullptr; /*tail = nullptr;*/ Block::header->hs.hashPrevBlock = block.blockHash; }
+Block::Block(const Block& block) { 
+	//header = block.header;
+	//List = block.List;
 
-Blockheader Block::getHeader() { return *Block::header; }
+	header = new Blockheader(*block.header);
+	List = new TransactionList(*block.List);
+	blockHash = new unsigned char[128]{ 0 };
+	memcpy_s(blockHash, _msize(blockHash), block.blockHash, _msize(block.blockHash));
+}
 
-TransactionList Block::getList() { return *Block::List; }
+Block::Block(unsigned char * hash, const Blockheader & h, const TransactionList & l)
+{
+	blockHash = new unsigned char[128]{ 0 };
+	memcpy_s(blockHash, _msize(blockHash), hash, _msize(hash));
+	header = new Blockheader(h);
+	List = new TransactionList(l);
+}
 
-unsigned char * Block::getBlockHash() { return Block::blockHash; }
+Blockheader Block::getHeader() { return *header; }
+
+TransactionList Block::getList() { return *List; }
+
+unsigned char * Block::getBlockHash() { return blockHash; }
 
 void Block::makeTransaction(const char * toAddr, const char * value, const char * fee, const char * sMsg) { List->add(new TransactionBase(toAddr, value, fee, sMsg)); }
 
 void Block::makeTransaction(const TransactionBase* tx) { List->add(new TransactionBase(*tx)); }
 
-void Block::mineBlock()
+void Block::mineBlock(const Block & prevBlock)
 {
-	Block::header->setBlockHeader(Block::header->hs.hashPrevBlock, Block::List);
-	TransactionUtility::TxUtil util;
-	unsigned char* diff = new unsigned char[Block::header->hs.Difficulty]{ 0 };
+	header->setBlockHeader(prevBlock.blockHash, *List);
+	unsigned char* diff = new unsigned char[header->Difficulty]{ 0 };
 	int tempNonce = 0;
-	for (unsigned int i = 0; i < Block::header->hs.Difficulty + 1; i++) { if (i == Block::header->hs.Difficulty) { diff[i] = '\0'; } else { diff[i] = '0'; } }
+	for (unsigned int i = 0; i < header->Difficulty + 1; i++) { if (i == header->Difficulty) { diff[i] = '\0'; } else { diff[i] = '0'; } }
 	while (running_flag) {
-		util.calculateHash(Block::blockHash, Block::header->hs.hashPrevBlock, Block::header->hs.hashMerkleRoot, Block::header->hs.Time, Block::header->hs.Difficulty, Block::header->hs.Nonce);
-		if (std::memcmp(Block::blockHash, diff, Block::header->hs.Difficulty) == 0) { break; }
-		else { Block::header->hs.Nonce = ++tempNonce; }
+		calculateHash(blockHash, header->hashPrevBlock, header->hashMerkleRoot, header->Time, header->Difficulty, header->Nonce);
+		if (std::memcmp(blockHash, diff, header->Difficulty) == 0) { break; }
+		else { header->Nonce = ++tempNonce; }
 	}
 	diff = { 0 };
 	delete[] diff;
 
 	std::cout << "success mined block" << std::endl;
-	std::cout << "mined block hash is " << Block::getBlockHash() << std::endl;
+	std::cout << "mined block hash is " << getBlockHash() << std::endl;
 }
 
-Block::~Block() { delete header; delete List; }
+Block::~Block() { delete header; delete List; /*delete[] blockHash;*/ }

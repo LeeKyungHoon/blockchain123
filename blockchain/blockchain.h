@@ -1,6 +1,8 @@
 
 #include"block.h"
 
+#pragma once
+
 class Blockchain {
 private:
 	std::vector<Block*> chain;
@@ -14,5 +16,6 @@ public:
 	void occurTransaction(std::string, std::string, std::string, std::string);
 	void occurTransaction(const TransactionBase * tx);
 	std::vector<Block*> getChain();
-	void rcv_block(Block block);
+	void rcv_block(const Block &block);
+	void rmvAll() { chain.clear(); };
 };
