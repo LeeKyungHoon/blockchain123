@@ -72,6 +72,7 @@ public:
 				Blockchain *chain = Blockchain::GetInstance();
 				for (Block* b : chain->getChain()) {
 					std::cout <<"current send block hash is : "<< b->blockHash << std::endl;
+					if (memcmp(b->blockHash, "00000", 5) != 0)continue;
 					BlockSerialize bs(*b);
 					std::stringstream ss;
 					boost::archive::text_oarchive ar(ss);
