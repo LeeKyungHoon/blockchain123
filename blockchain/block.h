@@ -26,6 +26,8 @@ public: //function
 	void makeTransaction(const char * toAddr, const char * value, const char * fee, const char * sMsg);
 	void makeTransaction(const TransactionBase*);
 	void mineBlock(const Block & prevBlock);
+	void stopMining();
+	void startMining();
 	~Block();
 };
 

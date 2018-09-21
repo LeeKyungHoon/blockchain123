@@ -55,4 +55,14 @@ void Block::mineBlock(const Block & prevBlock)
 	std::cout << "mined block hash is " << getBlockHash() << std::endl;
 }
 
+void Block::stopMining()
+{
+	running_flag = false;
+}
+
+void Block::startMining()
+{
+	running_flag = true;
+}
+
 Block::~Block() { delete header; delete List; /*delete[] blockHash;*/ }

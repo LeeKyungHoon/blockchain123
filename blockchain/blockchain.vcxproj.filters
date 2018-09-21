@@ -34,6 +34,9 @@
     <Filter Include="serialization">
       <UniqueIdentifier>{cb81546b-da07-47ed-bd08-5cc93557b0cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="verify">
+      <UniqueIdentifier>{ccc71c68-c83a-4386-9536-1ed43b4615b5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -74,6 +77,9 @@
     </ClInclude>
     <ClInclude Include="node.h">
       <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="verify.h">
+      <Filter>verify</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
