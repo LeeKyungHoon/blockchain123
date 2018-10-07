@@ -1,7 +1,6 @@
 #pragma once
 
 #include"TransactionUtility.h"
-#include"boost/serialization/string.hpp"
 
 class TransactionBase : public TransactionUtility::TxUtil {
 public:

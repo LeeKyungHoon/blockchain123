@@ -90,13 +90,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Boost\boost_1_68_0;C:\cryptopp700;C:\Users\Administrator\source\cryptopp700;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Debug;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Release;C:\Users\User\source\cryptopp700;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\cryptopp700;C:\Program Files %28x86%29\Boost\boost_1_68_0</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Boost\boost_1_68_0\stage\lib;C:\cryptopp700\Win32\Output\Release;C:\Users\Administrator\source\cryptopp700\Win32\Output\Release;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Debug;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\cryptopp700\Win32\Output\Release;C:\Program Files %28x86%29\Boost\boost_1_68_0\stage\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>libboost_serialization-vc141-mt-gd-x32-1_68.lib;cryptlib.lib;cryptopp.lib;dlltest.lib;cryptlib.lib;cryptopp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -108,12 +108,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Boost\boost_1_68_0;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Debug;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Release;C:\Users\User\source\cryptopp700;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\cryptopp700;C:\Program Files %28x86%29\Boost\boost_1_68_0</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Boost\boost_1_68_0\stage\lib;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Debug;C:\Users\User\source\cryptopp700\Win32\DLL_Output\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\cryptopp700\Win32\Output\Release;C:\Program Files %28x86%29\Boost\boost_1_68_0\stage\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>libboost_serialization-vc141-mt-gd-x32-1_68.lib;dlltest.lib;cryptlib.lib;cryptopp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -127,7 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Boost\boost_1_68_0;C:\cryptopp700</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\cryptopp700;C:\Program Files %28x86%29\Boost\boost_1_68_0</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -135,7 +135,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Boost\boost_1_68_0\stage\lib;C:\cryptopp700\Win32\Output\Release</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\cryptopp700\Win32\Output\Release;C:\Program Files %28x86%29\Boost\boost_1_68_0\stage\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>libboost_serialization-vc141-mt-gd-x32-1_68.lib;cryptlib.lib;cryptopp.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -149,7 +149,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Boost\boost_1_68_0;C:\cryptopp700</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\cryptopp700;C:\Program Files %28x86%29\Boost\boost_1_68_0</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -157,7 +157,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Boost\boost_1_68_0\stage\lib;C:\cryptopp700\Win32\Output\Release</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\cryptopp700\Win32\Output\Release;C:\Program Files %28x86%29\Boost\boost_1_68_0\stage\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>libboost_serialization-vc141-mt-gd-x32-1_68.lib;cryptlib.lib;cryptopp.lib;</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -175,7 +175,6 @@
     <ClInclude Include="transactionList.h" />
     <ClInclude Include="TransactionUtility.h" />
     <ClInclude Include="verify.h" />
-    <ClInclude Include="wallet.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="block.cpp" />
@@ -191,7 +190,6 @@
     </ClCompile>
     <ClCompile Include="transactionList.cpp" />
     <ClCompile Include="TransactionUtility.cpp" />
-    <ClCompile Include="wallet.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

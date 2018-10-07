@@ -60,7 +60,6 @@ void client::to_peer(const Block &b, const std::vector<sock_serialize> & peers)
 			std::cout << "failed create socket" << std::endl;
 			exit(1);
 		}
-		memset(&buff_rcv, 0, sizeof(BUFF_SIZE));
 
 		memset(&serv_addr, 0, sizeof(serv_addr));
 		serv_addr.sin_family = AF_INET;

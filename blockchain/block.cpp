@@ -37,9 +37,9 @@ void Block::makeTransaction(const char * toAddr, const char * value, const char 
 
 void Block::makeTransaction(const TransactionBase* tx) { List->add(new TransactionBase(*tx)); }
 
-void Block::mineBlock(const Block & prevBlock)
+void Block::mineBlock(Block* prevBlock)
 {
-	header->setBlockHeader(prevBlock.blockHash, *List);
+	header->setBlockHeader(prevBlock->blockHash, *List);
 	unsigned char* diff = new unsigned char[header->Difficulty]{ 0 };
 	int tempNonce = 0;
 	for (unsigned int i = 0; i < header->Difficulty + 1; i++) { if (i == header->Difficulty) { diff[i] = '\0'; } else { diff[i] = '0'; } }

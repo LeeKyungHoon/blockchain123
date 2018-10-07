@@ -1,4 +1,4 @@
-#include"transactionBase.h"
+#include"transactionList.h"
 #include"block.h"
 
 #include<sstream>
@@ -84,8 +84,9 @@ public:
 		time = (const char*)t.txTime;
 		sign = t.txSign;
 	};
-	TransactionBase getTransaction() { 
-		return TransactionBase(hash.c_str(), addr.c_str(), val.c_str(), fee.c_str(), msg.c_str(), time.c_str(), sign.c_str()); };
+	TransactionBase getTransaction() {
+		return TransactionBase(hash.c_str(), addr.c_str(), val.c_str(), fee.c_str(), msg.c_str(), time.c_str(), sign.c_str());
+	};
 	virtual ~TxSerialize() {};
 };
 
@@ -99,19 +100,20 @@ private:
 	std::unordered_map<std::string, TxSerialize> transactionHashMap;
 public:
 	TxListSerialize() {};
-	TxListSerialize(const TransactionList & list) {
-		for (auto it : list.txMap) {
+	TxListSerialize(TransactionList* list) {
+		for (auto it : list->getList()) {
 			transactionHashMap.insert(std::pair<std::string, TxSerialize>((const char*)it.first, TxSerialize(it.second)));
 		}
 	};
-	TransactionList getTransactionList() {
-		std::unordered_map<unsigned char*, TransactionBase> list;
+	void getTransactionList() {
+		std::unordered_map<PUCHAR, TransactionBase> list;
 
 		for (auto it : transactionHashMap) {
 			list.insert(std::pair<unsigned char*, TransactionBase>((unsigned char*)it.first.c_str(), it.second.getTransaction()));
 		}
 
-		return list;
+		TransactionList *txList = TransactionList::GetInstance();
+		txList->add(list);
 	};
 	virtual ~TxListSerialize() {};
 
@@ -143,9 +145,10 @@ public:
 		diff = std::to_string(h.Difficulty);
 		nonce = std::to_string(h.Nonce);
 	};
-	Blockheader getBlockheader() { 
+	Blockheader getBlockheader() {
 		//std::cout << "hashPrevBlock : " << prev << " merkleroot : " << root << " time : " << time << " diff : " << diff << " nonce : " << nonce << std::endl;
-		return Blockheader((unsigned char*)prev.c_str(), (unsigned char*)root.c_str(), (unsigned char*)time.c_str(), (unsigned int)std::atoi(diff.c_str()), (unsigned int)std::atoi(nonce.c_str())); };
+		return Blockheader((unsigned char*)prev.c_str(), (unsigned char*)root.c_str(), (unsigned char*)time.c_str(), (unsigned int)std::atoi(diff.c_str()), (unsigned int)std::atoi(nonce.c_str()));
+	};
 	virtual ~HeaderSerialize() {};
 };
 
@@ -167,10 +170,15 @@ public:
 	BlockSerialize(const Block& b) {
 		hash = (const char*)b.blockHash;
 		hs = HeaderSerialize(*b.header);
-		tls = TxListSerialize(*b.List);
+		tls = TxListSerialize(b.List);
 	};
-	Block getBlock() { 
+	Block getBlock() {
 		//std::cout << "hash is : " << hash << std::endl;
-		return Block((unsigned char*)hash.c_str(), hs.getBlockheader(), tls.getTransactionList()); };
+		tls.getTransactionList();
+		return Block((PUCHAR)hash.c_str(), hs.getBlockheader());
+	};
+	void getTxList() {
+		tls.getTransactionList();
+	};
 	virtual ~BlockSerialize() {};
 };

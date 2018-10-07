@@ -17,24 +17,8 @@ void TransactionList::add(unsigned char * hash, TransactionBase t)
 	txMap.insert(std::pair<unsigned char*, TransactionBase>(hash, t));
 }
 
-void TransactionList::getLastElem(TransactionBase & tx)
+TransactionBase TransactionList::getLastElem()
 {
-	for (auto it = this->txMap.begin(); it != this->txMap.end(); ++it) {
-		if (!it->second.txSign) {
-			tx = it->second;
-			break;
-		}
-	}
-}
-
-TransactionBase* TransactionList::getLastElem()
-{
-	TransactionBase* tx = nullptr;
-	for (auto it = this->txMap.begin(); it != this->txMap.end(); ++it) {
-		if (!it->second.txSign) {
-			tx = &it->second;
-			break;
-		}
-	}
-	return tx;
+	std::unordered_map<unsigned char*, TransactionBase>::iterator it = txMap.end();
+	return it->second;
 }

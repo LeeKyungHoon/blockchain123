@@ -13,21 +13,60 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="wallet">
+      <UniqueIdentifier>{36456451-1e30-41ca-b727-95e266c1beae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="transaction">
+      <UniqueIdentifier>{2ce319ba-117a-4049-b70b-d4fbaa367fcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="network">
+      <UniqueIdentifier>{de6b79a1-c0cb-43a7-a87f-47a70bdbb0e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="serialization">
+      <UniqueIdentifier>{140210d4-4b1d-4b9d-bfc7-1c210a0934dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="block">
+      <UniqueIdentifier>{887e2a3b-5d74-452c-b5f5-35f93e25bd7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="wallet.h">
+      <Filter>wallet</Filter>
     </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="transactionList.h">
+      <Filter>transaction</Filter>
+    </ClInclude>
+    <ClInclude Include="TransactionUtility.h">
+      <Filter>transaction</Filter>
+    </ClInclude>
+    <ClInclude Include="transactionBase.h">
+      <Filter>transaction</Filter>
+    </ClInclude>
+    <ClInclude Include="serialization.h">
+      <Filter>serialization</Filter>
+    </ClInclude>
+    <ClInclude Include="client.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="server.h">
+      <Filter>network</Filter>
+    </ClInclude>
+    <ClInclude Include="block.h">
+      <Filter>block</Filter>
+    </ClInclude>
+    <ClInclude Include="blockheader.h">
+      <Filter>block</Filter>
+    </ClInclude>
+    <ClInclude Include="chain.h">
+      <Filter>block</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Wallet.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="wallet.cpp">
+      <Filter>wallet</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

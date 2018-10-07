@@ -11,7 +11,6 @@ public: // arg
 	Blockheader *header;
 	TransactionList *List;
 	unsigned char* blockHash;
-	//Block * tail;
 
 	
 
@@ -25,7 +24,7 @@ public: //function
 	unsigned char* getBlockHash();
 	void makeTransaction(const char * toAddr, const char * value, const char * fee, const char * sMsg);
 	void makeTransaction(const TransactionBase*);
-	void mineBlock(const Block & prevBlock);
+	void mineBlock(Block* prevBlock);
 	void stopMining();
 	void startMining();
 	~Block();

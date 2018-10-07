@@ -38,7 +38,7 @@ public: //function
 		hashPrevBlock = new unsigned char[128]{ 0 };
 		hashMerkleRoot = new unsigned char[128]{ 0 };
 		Time = new unsigned char[128]{ 0 };
-		Difficulty = 5;
+		Difficulty = 4;
 		Nonce = 0;
 	};
 

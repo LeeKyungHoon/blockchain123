@@ -22,9 +22,6 @@
     <Filter Include="block">
       <UniqueIdentifier>{6efdc1e4-469d-49e3-87c4-bb730c3943e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="wallet">
-      <UniqueIdentifier>{dd42a05c-b827-423b-a38b-3bd35b1c13c8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="chain">
       <UniqueIdentifier>{c9c07a1a-4d01-4a02-95ef-7ddd9a0a22d4}</UniqueIdentifier>
     </Filter>
@@ -63,9 +60,6 @@
     <ClInclude Include="Blockheader.h">
       <Filter>block</Filter>
     </ClInclude>
-    <ClInclude Include="wallet.h">
-      <Filter>wallet</Filter>
-    </ClInclude>
     <ClInclude Include="blockchain.h">
       <Filter>chain</Filter>
     </ClInclude>
@@ -97,9 +91,6 @@
     </ClCompile>
     <ClCompile Include="block.cpp">
       <Filter>block</Filter>
-    </ClCompile>
-    <ClCompile Include="wallet.cpp">
-      <Filter>wallet</Filter>
     </ClCompile>
     <ClCompile Include="blockchain.cpp">
       <Filter>chain</Filter>

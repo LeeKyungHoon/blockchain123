@@ -87,6 +87,30 @@ public:
 			//tx recive
 			else if (memcmp(buff_rcv, "1", 1) == 0) {
 
+				char temp[BUFF_SIZE];
+
+				for (int i = 0; i < BUFF_SIZE-1; i++) {
+					temp[i] = buff_rcv[i+1];
+				}
+
+
+				std::cout << "transaction received from client" << std::endl;
+				std::stringstream ss(temp);
+				boost::archive::text_iarchive ar(ss);
+				TxSerialize ts;
+				ar >> ts;
+				Blockchain * chain = Blockchain::GetInstance();
+				TransactionBase *tx = new TransactionBase(ts.getTransaction());
+				std::cout << "transaction contents" << std::endl;
+				std::cout << "transaction hash : "<<tx->txHash << std::endl;
+				std::cout << "transaction addr : "<<tx->txToAddr << std::endl;
+				std::cout << "transaction val : "<<tx->txVal << std::endl;
+				std::cout << "transaction fee : "<<tx->txFee << std::endl;
+				std::cout << "transaction time : "<<tx->txTime << std::endl;
+				std::cout << "transaction signed message : "<<tx->txSignedMsg << std::endl;
+
+				chain->occurTransaction(tx);
+
 			}
 			//block recive
 			else {
@@ -97,7 +121,7 @@ public:
 				BlockSerialize bs;
 				ar >> bs;
 				Blockchain * chain = Blockchain::GetInstance();
-					chain->rcv_block(bs.getBlock());
+				chain->rcv_block(bs.getBlock());
 			}
 
 			memset(&buff_rcv, 0, sizeof(BUFF_SIZE));
